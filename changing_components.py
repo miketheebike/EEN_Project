@@ -226,26 +226,12 @@ def effect_size_question(jsonfile_name):
         st.markdown(jsonfile_name['effect_size'])
         st.text_input("Please insert a number or skip if you are unsure.", key = jsonfile_name['num_input_question'])
 
-updated_bins_dfs = [
-    updated_bins_question_1_df,
-    updated_bins_question_2_df,
-    updated_bins_question_3_df,
-    updated_bins_question_4_df,
-    updated_bins_question_5_df,
-    updated_bins_question_6_df,
-    updated_bins_question_7_df,
-    updated_bins_question_8_df
-]
 
 
-def add_submission(updated_bins_question_1_df,
-    updated_bins_question_2_df,
-    updated_bins_question_3_df,
-    updated_bins_question_4_df,
-    updated_bins_question_5_df,
-    updated_bins_question_6_df,
-    updated_bins_question_7_df,
-    updated_bins_question_8_df)
+def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, updated_bins_question_8_df)
+
+    updated_bins_list = [updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, updated_bins_question_8_df]
+
     # Step 1: Process the transposed question data
     def restructure_df(df, question_number):
         return (df.transpose()
@@ -253,7 +239,7 @@ def add_submission(updated_bins_question_1_df,
                   .iloc[1:])
 
     # Process and transpose all DataFrames
-    questions_df = pd.concat([restructure_df(df, i) for i, df in enumerate(updated_bins_dfs)], axis=1)
+    questions_df = pd.concat([restructure_df(df, i) for i, df in enumerate(updated_bins_list)], axis=1)
 
     # Step 2: Retrieve session state data as a DataFrame
     data = st.session_state['data']
