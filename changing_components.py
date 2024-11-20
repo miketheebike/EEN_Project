@@ -45,7 +45,7 @@ def safe_var(key):
     if key in st.session_state:
         return st.session_state[key]
 
-def add_submission_to_sheet(*updated_bins_dfs):
+def add_submission(*updated_bins_dfs):
     # Step 1: Process the transposed question data
     def restructure_df(df, question_number):
         return (df.transpose()
