@@ -217,8 +217,8 @@ def create_question(jsonfile_name):
             height = 400
             )
             st.plotly_chart(fig, config = config ,use_container_width=True)
-            updated_bins_list1 = pd.DataFrame(bins_grid)
-            st.dataframe(updated_bins_list1)
+            updated_bins_list = [pd.DataFrame(bins_grid)] 
+            st.dataframe(updated_bins_list)
             # def restructure_df(df, i):
             #     transposed_df = df.transpose()
             #     transposed_df.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df.iloc[0])]
