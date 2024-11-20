@@ -41,7 +41,7 @@ def add_submission()
     USER_PROF_CATEGORY = 'User Professional Category'
     USER_POSITION = 'User Working Position'
 
-   data[USER_FULL_NAME].append(safe_var('user_full_name'))
+    data[USER_FULL_NAME].append(safe_var('user_full_name'))
     data[USER_POSITION].append(safe_var('user_position'))
     data[USER_PROF_CATEGORY].append(safe_var('professional_category'))
     st.session_state['data'] = data
