@@ -27,6 +27,18 @@ def initialize_session_state():
             'User Full Name': [],
             'User Working Position': [],
             'User Professional Category': [],
+            'User Years of Experience': [],
+            'Working Hours': [],
+            'Minimum Effect Size Q1': [],
+            'Minimum Effect Size Q2': [],    
+            'Minimum Effect Size Q3': [],
+            'Minimum Effect Size Q4': [],
+            'Minimum Effect Size Q5': [],
+            'Minimum Effect Size Q6': [],
+            'Minimum Effect Size Q7': [],
+            'Minimum Effect Size Q8': [],
+            'Cost-Benefit Ratio': [],
+            'Risk Aversion': [],
         }
     
 def safe_var(key):
@@ -49,12 +61,35 @@ def add_submission_to_sheet(*updated_bins_dfs):
     USER_FULL_NAME = 'User Full Name'
     USER_PROF_CATEGORY = 'User Professional Category'
     USER_POSITION = 'User Working Position'
-
+    YEARS_OF_EXPERIENCE = 'User Years of Experience'
+    WORKING_HOURS = 'Working Hours'
+    MIN_EFF_SIZE_Q1 = 'Minimum Effect Size Q1'
+    MIN_EFF_SIZE_Q2 = 'Minimum Effect Size Q2'
+    MIN_EFF_SIZE_Q3 = 'Minimum Effect Size Q3'
+    MIN_EFF_SIZE_Q4 = 'Minimum Effect Size Q4'
+    MIN_EFF_SIZE_Q5 = 'Minimum Effect Size Q5'
+    MIN_EFF_SIZE_Q6 = 'Minimum Effect Size Q6'
+    MIN_EFF_SIZE_Q7 = 'Minimum Effect Size Q7'
+    MIN_EFF_SIZE_Q8 = 'Minimum Effect Size Q8'
+    COST_BENEFIT_RATIO = 'Cost-Benefit Ratio'
+    RISK_AVERSION = 'Risk Aversion'
     # Append user inputs to the session state data dictionary
     data[USER_FULL_NAME].append(safe_var('user_full_name'))
     data[USER_POSITION].append(safe_var('user_position'))
     data[USER_PROF_CATEGORY].append(safe_var('professional_category'))
-
+    data[YEARS_OF_EXPERIENCE].append(safe_var('years_of_experience'))
+    data[WORKING_HOURS].append(safe_var('working_hours'))
+    data[MIN_EFF_SIZE_Q1].append(safe_var('num_input_question1'))
+    data[MIN_EFF_SIZE_Q2].append(safe_var('num_input_question2'))
+    data[MIN_EFF_SIZE_Q3].append(safe_var('num_input_question3'))
+    data[MIN_EFF_SIZE_Q4].append(safe_var('num_input_question4'))
+    data[MIN_EFF_SIZE_Q5].append(safe_var('num_input_question5'))
+    data[MIN_EFF_SIZE_Q6].append(safe_var('num_input_question6'))
+    data[MIN_EFF_SIZE_Q7].append(safe_var('num_input_question7'))
+    data[MIN_EFF_SIZE_Q8].append(safe_var('num_input_question8'))
+    data[COST_BENEFIT_RATIO].append(safe_var('cost_benefit'))
+    data[RISK_AVERSION].append(safe_var('risk_aversion'))
+    
     session_state_df = pd.DataFrame(data)
 
     # Combine `session_state_df` with `questions_df`
