@@ -31,7 +31,7 @@ def secrets_to_json():
         
     }
 def personal_information():
-    st.subheader(SECTION_ONE)
+    st.subheader("Section Personal Info")
     col1, _ = st.columns(2)
     with col1:
         st.text_input("Please, enter your full name:", key = 'user_full_name')
