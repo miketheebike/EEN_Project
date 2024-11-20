@@ -37,6 +37,82 @@ def personal_information():
         st.text_input("Please, enter your full name:", key = 'user_full_name')
         st.text_input("Please, enter your working title:", key = 'user_position')
         st.selectbox('Please, specify your professional category:', ('Policy implementer (EENergy consortium working package leaders)', 'Donor (European Commission)', 'Researcher', 'Sustainability Advisor', 'Entrepreneur/Firm Representative'), key="professional_category")
+
+def instructions():
+
+    st.subheader(TITLE_INSTRUCTIONS)
+    st.write(SUBTITLE_INSTRUCTIONS)
+
+    st.subheader("Temperature Forecast Tomorrow in Your City")
+    st.write('_Please scroll on the table to see all available options._')
+
+    #with data_container:
+    table, plot = st.columns([0.4, 0.6], gap = "large")
+    
+    with table:
+
+        # Create some example data as a Pandas DataFrame
+        values_column = ['< 20'] + list(range(21, 30)) + ['> 30']
+        zeros_column = [0 for _ in values_column]
+        zeros_column[4:9] = [5, 15, 45, 20, 15]
+
+        data = {'Temperature': values_column, 'Probability': zeros_column}
+        df = pd.DataFrame(data)
+        # Calculate the height based on the number of rows
+        row_height = 35  # Adjust as necessary based on row size
+        table_height = ((len(df)+1) * row_height) 
         
+        df['Temperature'] = df['Temperature'].astype('str')
+    
+        st.data_editor(df, use_container_width=True, hide_index=True, disabled=('Temperature', "Probability"), height=table_height)
+
+    st.write(CAPTION_INSTRUCTIONS)
+
+    with plot:
+        config = {'displayModeBar': False, "staticPlot": True }
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=values_column, 
+            y=df['Probability'], 
+            marker_color='rgba(50, 205, 50, 0.9)',  # A nice bright green
+            marker_line_color='rgba(0, 128, 0, 1.0)',  # Dark green outline for contrast
+            marker_line_width=2,  # Width of the bar outline
+            text=[f"{p}" for p in df['Probability']],  # Adding percentage labels to bars
+            textposition='auto',
+            name='Probability'
+        ))
+
+        fig.update_layout(
+            title={
+                'text': "Probability distribution",
+                'y':0.9,
+                'x':0.5,
+                'xanchor': 'center',
+                'yanchor': 'top'
+            },
+            xaxis_title="Expectation Range",
+            yaxis_title="Probability (%)",
+            yaxis=dict(
+                range=[0, 100], 
+                gridcolor='rgba(255, 255, 255, 0.2)',  # Light grid on dark background
+                showline=True,
+                linewidth=2,
+                linecolor='white',
+                mirror=True
+            ),
+            xaxis=dict(
+                tickangle=-45,
+                showline=True,
+                linewidth=2,
+                linecolor='white',
+                mirror=True
+            ),
+            font=dict(color='white'),    # White font color for readability
+        width = 350,# Adjust width here
+        height = 400
+        )
+        st.plotly_chart(fig,config = config, use_container_width=True)
+    
+
 def submit(): 
     st.session_state['submit'] = True
