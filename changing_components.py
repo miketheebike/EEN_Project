@@ -33,7 +33,7 @@ def safe_var(key):
     if key in st.session_state:
         return st.session_state[key]
 
-def add_submission()
+def add_submission():
     # Update session state
     data = st.session_state['data']
 
