@@ -217,7 +217,7 @@ def create_question(jsonfile_name):
             height = 400
             )
             st.plotly_chart(fig, config = config ,use_container_width=True)
-
+            st.dataframe(pd.DataFrame(bins_grid))
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
 def effect_size_question(jsonfile_name):
