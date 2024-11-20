@@ -79,6 +79,30 @@ def survey_title_subtitle(header_config):
     st.title(header_config['survey_title'])
     st.write(header_config['survey_description'])
 
+def display_message(message: str, color: str) -> None:
+    """
+    Display a styled message with custom color.
+
+    Args:
+        message (str): The message to display.
+        color (str): The text color (e.g., "Red", "Green").
+    """
+    styled_message = f'<b style="font-family:sans-serif; color:{color}; font-size: 20px; padding: 10px;">{message}</b>'
+    st.markdown(styled_message, unsafe_allow_html=True)
+
+def calculate_percentage_difference(data: pd.DataFrame, column: str) -> int:
+    """
+    Calculate the remaining percentage to be allocated.
+
+    Args:
+        data (pd.DataFrame): The DataFrame containing percentage data.
+        column (str): The column name for percentages.
+
+    Returns:
+        int: The remaining percentage (positive if under-allocated, negative if over-allocated).
+    """
+    return round(100 - sum(data[column]))
+
 def create_question(jsonfile_name: dict) -> None:
     """
     Generate a question and its corresponding editable data visualization.
