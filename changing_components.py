@@ -218,24 +218,25 @@ def create_question(jsonfile_name):
             )
             st.plotly_chart(fig, config = config ,use_container_width=True)
             updated_bins_list1 = pd.DataFrame(bins_grid)
-            def restructure_df(df, i):
-                transposed_df = df.transpose()
-                transposed_df.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df.iloc[0])]
-                transposed_df = transposed_df.iloc[1:]
-                return transposed_df
+            st.dataframe(updated_bins_list1)
+            # def restructure_df(df, i):
+            #     transposed_df = df.transpose()
+            #     transposed_df.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df.iloc[0])]
+            #     transposed_df = transposed_df.iloc[1:]
+            #     return transposed_df
         
-            transposed_bins_list = []
-            for i, df in enumerate(updated_bins_list1):
-                transposed_bins_list.append(restructure_df(df, i))
+            # transposed_bins_list = []
+            # for i, df in enumerate(updated_bins_list1):
+            #     transposed_bins_list.append(restructure_df(df, i))
         
-            # Concatenating transposed dataframes
-            questions_df = pd.concat(transposed_bins_list, axis=1)
+            # # Concatenating transposed dataframes
+            # questions_df = pd.concat(transposed_bins_list, axis=1)
         
-            # Resetting index if needed
-            questions_df.reset_index(drop=True, inplace=True)
-            data = st.session_state['data']
-            st.dataframe(questions_df)
-            st.write(data)
+            # # Resetting index if needed
+            # questions_df.reset_index(drop=True, inplace=True)
+            # data = st.session_state['data']
+            # st.dataframe(questions_df)
+            # st.write(data)
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
 def effect_size_question(jsonfile_name):
