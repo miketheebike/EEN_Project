@@ -128,6 +128,8 @@ effect_size_question2 = effect_size_question(q2_config)
 #     st.slider("Please move the slider to indicate your preference.", 1, 10, key= "risk_aversion")
 
 submit = st.button("Submit", on_click= add_submission, args = ([updated_bins_question_1_df, updated_bins_question_2_df]))
+for key, value in data.items():
+    st.write(f"Key: {key}, Length: {len(value)}")
 #, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, updated_bins_question_8_df
 if st.session_state['submit']:
     st.success(f"Thank you for completing the Survey on {config['header']['survey_title']}!")
