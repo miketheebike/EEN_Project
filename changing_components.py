@@ -253,7 +253,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df):
     USER_FULL_NAME = 'User Full Name'
     USER_PROF_CATEGORY = 'User Professional Category'
     USER_POSITION = 'User Working Position'
-    YEARS_OF_EXPERIENCE = 'User Years of Experience'
+    #YEARS_OF_EXPERIENCE = 'User Years of Experience'
     WORKING_HOURS = 'Working Hours'
     MIN_EFF_SIZE_Q1 = 'Minimum Effect Size Q1'
     MIN_EFF_SIZE_Q2 = 'Minimum Effect Size Q2'
@@ -269,7 +269,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df):
     data[USER_FULL_NAME].append(safe_var('user_full_name'))
     data[USER_POSITION].append(safe_var('user_position'))
     data[USER_PROF_CATEGORY].append(safe_var('professional_category'))
-    data[YEARS_OF_EXPERIENCE].append(safe_var('years_of_experience'))
+    #data[YEARS_OF_EXPERIENCE].append(safe_var('years_of_experience'))
     data[WORKING_HOURS].append(safe_var('working_hours'))
     data[MIN_EFF_SIZE_Q1].append(safe_var('num_input_question1'))
     data[MIN_EFF_SIZE_Q2].append(safe_var('num_input_question2'))
