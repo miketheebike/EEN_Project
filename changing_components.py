@@ -236,6 +236,7 @@ def create_question(jsonfile_name):
             questions_df1.reset_index(drop=True, inplace=True)
             # data = st.session_state['data']
             st.dataframe(questions_df1)
+            st.dataframe(pd.DataFrame(st.session_state['data']))
             # st.write(data)
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
