@@ -250,39 +250,24 @@ def effect_size_question(jsonfile_name):
 
 
 
-def add_submission():
-    """
-    Processes and concatenates the `updated_bins_*` DataFrames from the question_variables dictionary.
+def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, updated_bins_question_8_df):
 
-    Args:
-        question_variables (dict): A dictionary containing all question-related variables,
-                                   including DataFrames for updated bins and other metrics.
+    updated_bins_list = [updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, updated_bins_question_8_df]
 
-    Returns:
-        pd.DataFrame: Concatenated DataFrame of all processed inputs.
-    """
-    # Step 1: Process the transposed question data
-    def restructure_df(df, question_number):
-        return (df.transpose()
-                  .rename(columns=lambda col: f'Q{question_number + 1} {df.iloc[0, col]}')
-                  .iloc[1:])
+    def restructure_df(df, i):
+        transposed_df = df.transpose()
+        transposed_df.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df.iloc[0])]
+        transposed_df = transposed_df.iloc[1:]
+        return transposed_df
 
-    # Step 2: Filter only `updated_bins_*` DataFrames from the dictionary
-    updated_bins_items = {
-        key: value for key, value in question_variables.items() if key.startswith("updated_bins_question_") and key.endswith("_df")
-    }
+    transposed_bins_list = []
+    for i, df in enumerate(updated_bins_list):
+        transposed_bins_list.append(restructure_df(df, i))
 
-    # Ensure valid DataFrames
-    valid_dfs = [
-        restructure_df(df, i) for i, (key, df) in enumerate(updated_bins_items.items()) if not df.empty
-    ]
+    # Concatenating transposed dataframes
+    questions_df = pd.concat(transposed_bins_list, axis=1)
 
-    # Step 3: Concatenate all valid DataFrames
-    if not valid_dfs:
-        raise ValueError("No valid DataFrames to concatenate.")
-
-    questions_df = pd.concat(valid_dfs, axis=1)
-        # Resetting index if needed
+    # Resetting index if needed
     questions_df.reset_index(drop=True, inplace=True)
     # Step 2: Retrieve session state data as a DataFrame
     data = st.session_state['data']
