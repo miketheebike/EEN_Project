@@ -47,11 +47,11 @@ def add_submission():
 
     session_state_df = pd.DataFrame(data)
     
-    #personal_data_df = session_state_df.iloc[:, :5]
+    personal_data_df = session_state_df.iloc[:, :5]
     #min_eff_df = session_state_df.iloc[:, 5:]
 
     #concatenated_df = pd.concat([personal_data_df, questions_df.set_index(personal_data_df.index), min_eff_df.set_index(personal_data_df.index)], axis=1)
-      
+    concatenated_df = personal_data_df.copy()
     st.session_state['submit'] = True
     
     #save data to google sheet
