@@ -56,7 +56,7 @@ col1, _= st.columns(2)
 with col1:   
     st.slider("Please move the slider to indicate your preference.", 1, 10, key= "risk_aversion")
 
-submit = st.button("Submit", on_click=lambda: add_submission(question_variables))
+submit = st.button("Submit", on_click= add_submission())
 
 if st.session_state['submit']:
     st.success(f"Thank you for completing the Survey on {config['header']['survey_title']}!")
