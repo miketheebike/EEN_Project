@@ -217,36 +217,36 @@ def create_question(jsonfile_name):
             height = 400
             )
             st.plotly_chart(fig, config = config ,use_container_width=True)
-            updated_bins_list1 = [pd.DataFrame(bins_grid)] 
+            # updated_bins_list1 = [pd.DataFrame(bins_grid)] 
             
-            def restructure_df1(df, i):
-                transposed_df1 = df.transpose()
-                transposed_df1.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df1.iloc[0])]
-                transposed_df1 = transposed_df1.iloc[1:]
-                return transposed_df1
+            # def restructure_df1(df, i):
+            #     transposed_df1 = df.transpose()
+            #     transposed_df1.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df1.iloc[0])]
+            #     transposed_df1 = transposed_df1.iloc[1:]
+            #     return transposed_df1
             
-            transposed_bins_list1 = []
-            for i, df in enumerate(updated_bins_list1):
-                transposed_bins_list1.append(restructure_df1(df, i))
+            # transposed_bins_list1 = []
+            # for i, df in enumerate(updated_bins_list1):
+            #     transposed_bins_list1.append(restructure_df1(df, i))
         
-            # Concatenating transposed dataframes
-            questions_df1 = pd.concat(transposed_bins_list1, axis=1)
+            # # Concatenating transposed dataframes
+            # questions_df1 = pd.concat(transposed_bins_list1, axis=1)
         
-            # Resetting index if needed
-            questions_df1.reset_index(drop=True, inplace=True)
-            # data = st.session_state['data']
-            st.dataframe(questions_df1)
-            test = pd.DataFrame(st.session_state['data'])
-            st.dataframe(test)
-            # st.write(data)
-            st.write("Test DataFrame Shape:", test.shape)
-            st.write("Questions DataFrame Shape:", questions_df1.shape)
-            if test.shape[0] > questions_df1.shape[0]:
-                questions_df1 = questions_df1.reindex(test.index, fill_value="empty")
-            elif questions_df1.shape[0] > test.shape[0]:
-                test = test.reindex(questions_df1.index, fill_value="empty")
+            # # Resetting index if needed
+            # questions_df1.reset_index(drop=True, inplace=True)
+            # # data = st.session_state['data']
+            # st.dataframe(questions_df1)
+            # test = pd.DataFrame(st.session_state['data'])
+            # st.dataframe(test)
+            # # st.write(data)
+            # st.write("Test DataFrame Shape:", test.shape)
+            # st.write("Questions DataFrame Shape:", questions_df1.shape)
+            # if test.shape[0] > questions_df1.shape[0]:
+            #     questions_df1 = questions_df1.reindex(test.index, fill_value="empty")
+            # elif questions_df1.shape[0] > test.shape[0]:
+            #     test = test.reindex(questions_df1.index, fill_value="empty")
 
-            st.dataframe(pd.concat([test, questions_df1.set_index(test.index)], axis=1))
+            # st.dataframe(pd.concat([test, questions_df1.set_index(test.index)], axis=1))
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
 def effect_size_question(jsonfile_name):
@@ -312,7 +312,10 @@ def add_submission(updated_bins_question_1_df ):
     # data[RISK_AVERSION].append(safe_var('risk_aversion'))
     
     session_state_df = pd.DataFrame(data)
-
+    if session_state_df.shape[0] > questions_df.shape[0]:
+        questions_df = questions_df.reindex(session_state_df.index, fill_value="empty")
+    elif questions_df.shape[0] > session_state_df.shape[0]:
+        session_state_df = session_state_df.reindex(questions_df.index, fill_value="empty")
     # Combine `session_state_df` with `questions_df`
     concatenated_df = pd.concat(
         [session_state_df, questions_df.set_index(session_state_df.index)],
