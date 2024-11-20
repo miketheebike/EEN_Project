@@ -321,7 +321,9 @@ def add_submission(updated_bins_question_1_df ):
         [session_state_df, questions_df.set_index(session_state_df.index)],
         axis=1
     )
-
+    st.dataframe(concatenated_df)
+    st.dataframe(session_state_df)
+    st.dataframe(questions_df)
     # Step 3: Authenticate and open Google Sheet
     scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
