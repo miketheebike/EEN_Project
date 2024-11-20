@@ -236,9 +236,9 @@ def create_question(jsonfile_name):
             questions_df1.reset_index(drop=True, inplace=True)
             # data = st.session_state['data']
             st.dataframe(questions_df1)
-            st.dataframe(pd.DataFrame(st.session_state['data']))
+            test = pd.DataFrame(st.session_state['data'])
             # st.write(data)
-            st.dataframe(pd.concat([pd.DataFrame(data), questions_df1.set_index(pd.DataFrame(data).index)], axis=1))
+            st.dataframe(pd.concat([test, questions_df1.set_index(test.index)], axis=1))
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
 def effect_size_question(jsonfile_name):
