@@ -252,13 +252,13 @@ def effect_size_question(jsonfile_name):
 
 
 
-def add_submission(updated_bins_dict):
+def add_submission():
     """
-    Processes and concatenates a dictionary of DataFrames for questions.
+    Processes and concatenates the `updated_bins_*` DataFrames from the question_variables dictionary.
 
     Args:
-        updated_bins_dict (dict): A dictionary where keys are question identifiers
-                                  and values are DataFrames representing updated bins.
+        question_variables (dict): A dictionary containing all question-related variables,
+                                   including DataFrames for updated bins and other metrics.
 
     Returns:
         pd.DataFrame: Concatenated DataFrame of all processed inputs.
@@ -269,9 +269,14 @@ def add_submission(updated_bins_dict):
                   .rename(columns=lambda col: f'Q{question_number + 1} {df.iloc[0, col]}')
                   .iloc[1:])
 
-    # Step 2: Process and transpose all DataFrames in the dictionary
+    # Step 2: Filter only `updated_bins_*` DataFrames from the dictionary
+    updated_bins_items = {
+        key: value for key, value in question_variables.items() if key.startswith("updated_bins_question_") and key.endswith("_df")
+    }
+
+    # Ensure valid DataFrames
     valid_dfs = [
-        restructure_df(df, i) for i, (key, df) in enumerate(updated_bins_dict.items()) if not df.empty
+        restructure_df(df, i) for i, (key, df) in enumerate(updated_bins_items.items()) if not df.empty
     ]
 
     # Step 3: Concatenate all valid DataFrames
