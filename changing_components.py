@@ -224,7 +224,7 @@ def create_question(jsonfile_name):
                 transposed_df1.columns =  [f'Q{i + 1}  {col}' for col in list(transposed_df1.iloc[0])]
                 transposed_df1 = transposed_df1.iloc[1:]
                 return transposed_df1
-        
+            
             transposed_bins_list1 = []
             for i, df in enumerate(updated_bins_list1):
                 transposed_bins_list1.append(restructure_df1(df, i))
@@ -241,6 +241,11 @@ def create_question(jsonfile_name):
             # st.write(data)
             st.write("Test DataFrame Shape:", test.shape)
             st.write("Questions DataFrame Shape:", questions_df1.shape)
+            if test.shape[0] > questions_df1.shape[0]:
+                questions_df1 = questions_df1.reindex(test.index, fill_value="empty")
+            elif questions_df1.shape[0] > test.shape[0]:
+                test = test.reindex(questions_df1.index, fill_value="empty")
+
             st.dataframe(pd.concat([test, questions_df1.set_index(test.index)], axis=1))
     return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
     
