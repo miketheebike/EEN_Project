@@ -238,7 +238,14 @@ updated_bins_dfs = [
 ]
 
 
-def add_submission(*updated_bins_dfs):
+def add_submission(updated_bins_question_1_df,
+    updated_bins_question_2_df,
+    updated_bins_question_3_df,
+    updated_bins_question_4_df,
+    updated_bins_question_5_df,
+    updated_bins_question_6_df,
+    updated_bins_question_7_df,
+    updated_bins_question_8_df)
     # Step 1: Process the transposed question data
     def restructure_df(df, question_number):
         return (df.transpose()
