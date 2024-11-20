@@ -16,13 +16,19 @@ personal_information()
 #st.subheader(SECTION_TWO)
 instructions()
 
-for question_key, question_config in config.items():
+for idx, (question_key, question_config) in enumerate(config.items(), start=1):
     if question_key.startswith("question"):  # Only process keys starting with 'question'
         # Process the question using create_question
         updated_bins, percentage_difference, num_bins = create_question(question_config)
 
         # Process the effect size using effect_size_question
         effect_size = effect_size_question(question_config)
+
+        # Dynamically create variable names
+        globals()[f"updated_bins_question_{idx}_df"] = updated_bins
+        globals()[f"percentage_difference{idx}"] = percentage_difference
+        globals()[f"num_bins{idx}"] = num_bins
+        globals()[f"effect_size_question{idx}"] = effect_size
 col2, _ = st.columns(2)
 with col2:
     st.image("SatSunGraph.png", width = 350)
