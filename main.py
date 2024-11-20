@@ -1,4 +1,4 @@
-streamlit run main.py
+
 #import streamlit as st
 import json
 from fixed_components import *
