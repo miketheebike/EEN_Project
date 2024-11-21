@@ -493,11 +493,19 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[RANKED_TOPICS_BY_TIME_COVERED].append(safe_var('time_covered_ranking'))
     
     # For the technology effectiveness data
-    # Assuming 'edited_df' is the DataFrame after user edits
     if 'edited_df' in st.session_state:
-        edited_df = st.session_state['edited_df']
-        # Since we ensured it's a DataFrame, we can call to_dict
-        data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df.to_dict(orient='records'))
+        edited_df_session = st.session_state['edited_df']
+        
+        # Debugging statements
+        st.write("Type of edited_df:", type(edited_df_session))
+        st.write("Content of edited_df:", edited_df_session)
+        
+        if isinstance(edited_df_session, pd.DataFrame):
+            data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df_session.to_dict(orient='records'))
+        elif isinstance(edited_df_session, dict):
+            data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df_session)
+        else:
+            data[TECHNOLOGY_EFFECTIVENESS_DATA].append(None)
     else:
         data[TECHNOLOGY_EFFECTIVENESS_DATA].append(None)
     
