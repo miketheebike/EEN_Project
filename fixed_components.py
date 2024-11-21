@@ -217,7 +217,7 @@ def sustainability_advisors_question():
             data_df = {
                 "Technology": technologies,
                 "Payback Time (months)": ["" for _ in technologies],  # Empty for user input
-                "Energy Savings (kWh/€1000)": ["" for _ in technologies]  # Empty for user input
+                "Energy Savings (€/€1000)": ["" for _ in technologies]  # Empty for user input
             }
             
             df = pd.DataFrame(data_df)
