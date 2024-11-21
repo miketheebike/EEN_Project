@@ -243,9 +243,13 @@ def create_question(jsonfile_name):
             else:
                 display_message(f'You have inserted {abs(percentage_difference)}% more, please review your percentage distribution.', 'Red')
 
-            # Optional: Add a reset button to set all probabilities to zero
-            if st.button('Reset values to zero'):
+            # Optional: Add a reset button with a unique key
+            if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
+                # Reset the probabilities column to zero
                 bins_grid[jsonfile_name['column_2']] = 0
+                # Update the session state for the data editor
+                st.session_state[jsonfile_name['key']][jsonfile_name['column_2']] = 0
+                # Re-run the script to refresh the UI
                 st.experimental_rerun()
 
         with plot:
