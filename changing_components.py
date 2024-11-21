@@ -482,6 +482,23 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[COST_BENEFIT_RATIO].append(safe_var('cost_benefit'))
     data[RISK_AVERSION].append(safe_var('risk_aversion'))
     
+    # Handle the "Other" option for investment criterion
+    if st.session_state.get("important_investment_criterion") == "Other (please specify)":
+        data[INVESTMENT_CRITERION_OTHER].append(safe_var('investment_criterion_other'))
+    else:
+        data[INVESTMENT_CRITERION_OTHER].append(None)
+    
+    # For ranked topics, ensure you capture the user input
+    # Assuming 'ranked_topics' is the list of topics after user ranking
+    data[RANKED_TOPICS_BY_TIME_COVERED].append(safe_var('time_covered_ranking'))
+    
+    # For the technology effectiveness data
+    # Assuming 'edited_df' is the DataFrame after user edits
+    if 'edited_df' in locals():
+        data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df.to_dict(orient='records'))
+    else:
+        data[TECHNOLOGY_EFFECTIVENESS_DATA].append(None)
+    
     session_state_df = pd.DataFrame(data)
 
 
