@@ -463,7 +463,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[REASONS_FOR_FIRMS_FOLLOWING].append(safe_var('reasons_for_firms_following'))
     data[ADVICE_NOT_FOLLOWED_BY_FIRMS].append(safe_var('advice_not_followed_by_firms'))
     data[REASONS_FIRMS_NOT_FOLLOWING].append(safe_var('reasons_firms_not_following'))
-    data[REASONS_FIRMS_NOT_FOLLOWING_OTHER].append(safe_var('reasons_firms_not_following_other'))
+    #data[REASONS_FIRMS_NOT_FOLLOWING_OTHER].append(safe_var('reasons_firms_not_following_other'))
     data[PERSONNEL_TRAINING_AGREEMENT].append(safe_var('personnel_training_agreement'))
     data[IMPORTANT_INVESTMENT_CRITERION].append(safe_var('important_investment_criterion'))
     data[TYPICAL_MONTHLY_ENERGY_EXPENDITURE].append(safe_var('typical_monthly_energy_expenditure'))
@@ -508,6 +508,12 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
         data[REASONS_FOR_FIRMS_FOLLOWING_OTHER].append(safe_var('reasons_for_firms_following_other'))
     else:
         data[REASONS_FOR_FIRMS_FOLLOWING_OTHER].append(None)
+
+    # Append 'Other' reasons if provided
+    if 'reasons_firms_not_following_other' in st.session_state:
+        data[REASONS_FIRMS_NOT_FOLLOWING_OTHER].append(safe_var('reasons_firms_not_following_other'))
+    else:
+        data[REASONS_FIRMS_NOT_FOLLOWING_OTHER].append(None)
         
     # Handle the "Other" option for investment criterion
     if st.session_state.get("important_investment_criterion") == "Other (please specify)":
