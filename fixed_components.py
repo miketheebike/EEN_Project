@@ -15,6 +15,26 @@ import altair as alt
 import plotly.graph_objs as go
 from streamlit_sortables import sort_items
 
+
+# Insert consent
+def add_consent():
+    st.session_state['consent'] = True
+      
+
+# Define a function to handle the Next button
+def next_page():
+    st.session_state['page'] += 1
+
+
+def consent_form():
+    st.markdown("""
+    By submitting the form below you agree to your data being used for research purposes. 
+    """)
+    agree = st.checkbox("I understand and consent.")
+    if agree:
+        st.markdown("You have consented. Select \"Next\" to start the survey.")
+        st.button('Next', on_click=add_consent)
+        
 def secrets_to_json():
     return {
         "type": st.secrets["type"],
@@ -30,8 +50,13 @@ def secrets_to_json():
         "universe_domain": st.secrets["universe_domain"],
         
     }
+
+SECTION_ONE = '''Section 1: Background Information'''
+SECTION_ONE_CONT = '''Section 1: Continued'''
+SECTION_TWO = '''Section 2: Program Expectations/Beliefs'''
+
 def personal_information():
-    st.subheader("Section Personal Info")
+    st.subheader("Section 1: Background Information")
     col1, _ = st.columns(2)
     with col1:
         st.text_input("Please, enter your full name:", key = 'user_full_name')
