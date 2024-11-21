@@ -105,56 +105,47 @@ def sustainability_advisors_question():
             st.subheader("Workload and Client Interactions")
             st.write("For the following questions, please reflect on your typical work within the **past 3 months**.")
             
-            # Question 1: Number of firms advised
-            st.write("1. How many firms do you advise in a typical week?")
+            # Question 5: Number of firms advised
             st.number_input(
-                "a. On energy efficiency topics:",
+                "5. In a typical week, how many firms do you advise on energy efficiency topics? (Include all clients, not just those within EEN)",
                 min_value=0,
                 step=1,
-                key="firms_energy_efficiency"
-            )
-            st.number_input(
-                "b. On sustainable development practices unrelated to energy efficiency:",
-                min_value=0,
-                step=1,
-                key="firms_sustainable_dev"
+                key="firms_consulted_pw"
             )
             
-            # Question 2: Average hours per client
             st.number_input(
-                "2. On average, how many hours do you spend working with each client on a project or service?",
+                "6. In a typical week, how many firms do you advise on sustainable development practices unrelated to energy efficiency?",
+                min_value=0,
+                step=1,
+                key="num_firms_advised"
+            )
+            
+            # Question 7: Average hours per client
+            st.number_input(
+                "7. On average, how many hours do you spend working with each client on a project or service?",
                 min_value=0.0,
                 step=0.5,
-                key="working_hours_per_client"
+                key="working_hours"
             )
             
-            # Question 3: Personal consulting hours per week
-            st.number_input(
-                "3. In a typical week, how many hours of consulting/advice do you personally provide to clients?",
-                min_value=0,
-                step=1,
-                key="personal_hours_per_week"
+            # Question 8: Meeting frequency
+            st.selectbox(
+                "8. How often do you meet with the firms you advise?",
+                options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"],
+                key="meeting_frequency_advisors"
             )
             
-            # Question 4: Meeting frequency and duration
-            st.write("4. How frequently do you meet with your clients, and how long are your typical meetings?")
+            # Question 9: Meeting duration
             st.selectbox(
-                "a. Meeting frequency:",
-                options=["Daily", "Weekly", "Bi-weekly", "Monthly", "Quarterly", "As needed"],
-                key="meeting_frequency"
-            )
-            st.selectbox(
-                "b. Typical meeting duration:",
+                "9. How long are your typical meetings with the firms you advise?",
                 options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"],
-                key="meeting_duration"
+                key="meeting_duration_advisors"
             )
             
             # Consultancy and Advisory Fees
             st.subheader("Consultancy and Advisory Fees")
-            
-            # Question 5: Personal consultancy fee
             st.radio(
-                "5. What is your personal hourly consultancy fee?",
+                "10. What is your per hour consultancy fee?",
                 options=[
                     "Less than €50",
                     "€50 - €100",
@@ -165,16 +156,15 @@ def sustainability_advisors_question():
                 key="personal_hourly_fee"
             )
             
-            # Question 6: Firm's consultancy fee if different
             st.radio(
-                "6. Is your firm's hourly consultancy fee different from your personal fee?",
+                "11. Is your firm's per hour consultancy fee different from your personal fee?",
                 options=["Yes", "No"],
                 key="firm_fee_different"
             )
             
             if st.session_state.get("firm_fee_different") == "Yes":
                 st.radio(
-                    "6a. What is your firm's average hourly consultancy fee?",
+                    "11a. What is your firm's average per hour consultancy fee?",
                     options=[
                         "Less than €50",
                         "€50 - €100",
@@ -184,6 +174,22 @@ def sustainability_advisors_question():
                     ],
                     key="firm_hourly_fee"
                 )
+            
+            # Consultancy and Advisory Hours
+            st.subheader("Consultancy and Advisory Hours")
+            st.number_input(
+                "12. In a typical week, how many hours of consulting/advice do you personally provide?",
+                min_value=0,
+                step=1,
+                key="personal_hours_per_week"
+            )
+            
+            st.number_input(
+                "13. Approximately, how many hours of consulting/advice does your firm provide in a typical week?",
+                min_value=0,
+                step=1,
+                key="firm_hours_per_week"
+            )
             # # Workload and Client Interactions
             # st.subheader("Workload and Client Interactions")
             # st.write("For the following questions, please reflect on your typical work within the **past 6 months**.")
