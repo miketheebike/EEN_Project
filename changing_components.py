@@ -284,6 +284,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     USER_POSITION = 'User Working Position'
     YEARS_AS_ADVISOR = 'Years as Advisor'
     JOIN_DATE_EEN = 'Join Date EEN'
+    EXPERT_OR_GENERALIST = 'Expert or Generalist'
     MIN_EFF_SIZE_Q1 = 'Minimum Effect Size Q1'
     MIN_EFF_SIZE_Q2 = 'Minimum Effect Size Q2'
     MIN_EFF_SIZE_Q3 = 'Minimum Effect Size Q3'
@@ -300,6 +301,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[USER_PROF_CATEGORY].append(safe_var('professional_category'))
     data[YEARS_AS_ADVISOR].append(safe_var('years_as_advisor'))
     data[JOIN_DATE_EEN].append(safe_var('join_date_een'))
+    data[EXPERT_OR_GENERALIST].append(safe_var('expert_or_generalist'))
     data[MIN_EFF_SIZE_Q1].append(safe_var('num_input_question1'))
     data[MIN_EFF_SIZE_Q2].append(safe_var('num_input_question2'))
     data[MIN_EFF_SIZE_Q3].append(safe_var('num_input_question3'))
