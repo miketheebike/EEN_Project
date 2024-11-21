@@ -309,45 +309,7 @@ def sustainability_advisors_question():
             
 
             
-            # Technologies Effectiveness Assessment
-            st.subheader("Technologies Effectiveness Assessment")
-            st.write("Please complete the table below for each technology. For **Energy Savings**, use the units **euros saved per euro invested (€/€1000 invested)**.")
-            st.write("**Note:** Please consider this for a firm of the size you usually advise.")
-            
-            st.markdown("""
-            - **Breakeven Time (months)**: How many months will it take to recover the money spent on this technology (e.g., '12' for 12 months).
-            - **Energy Savings (€/€1000 invested)**: How much money is saved for every €1000 invested in this technology? For example, if the savings are €500 per €1000 invested, write '500'. If you are unsure, leave the field blank or provide an estimate.
-            """)
-            
-            technologies = [
-                "Renewable Energy (PV Panels)",
-                "Energy Storage",
-                "Combined Renewable + Storage",
-                "Efficient Lighting",
-                "HVAC Systems",
-                "Building Upgrades",
-                "Machinery Upgrades",
-                "Energy-Efficient Vehicles"
-            ]
-            
-            # Initialize data
-            data_df = {
-                "Technology": technologies,
-                "Breakeven Time (months)": ["" for _ in technologies],
-                "Energy Savings (€/€1000 invested)": ["" for _ in technologies]
-            }
-            
-            df = pd.DataFrame(data_df)
-            
-            # Display the data editor
-            edited_df = st.data_editor(
-                df,
-                use_container_width=True,
-                hide_index=True,
-                disabled=['Technology'],
-                key='edited_df'
-            )
-            
+
             # Advice Followed by Firms
             st.subheader("Advice Followed by Firms")
             st.text_area(
@@ -434,6 +396,46 @@ def sustainability_advisors_question():
             )
             if st.session_state.get("important_investment_criterion") == "Other (please specify)":
                 st.text_input("Please specify the criterion:", key="investment_criterion_other")
+
+            # Technologies Effectiveness Assessment
+            st.subheader("Technologies Effectiveness Assessment (Final Question)")
+            st.write("Please complete the table below for each technology. For **Energy Savings**, use the units **euros saved per euro invested (€/€1000 invested)**.")
+            st.write("**Note:** Please consider this for a firm of the size you usually advise.")
+            
+            st.markdown("""
+            - **Breakeven Time (months)**: How many months will it take to recover the money spent on this technology (e.g., '12' for 12 months).
+            - **Energy Savings (€/€1000 invested)**: How much money is saved for every €1000 invested in this technology? For example, if the savings are €500 per €1000 invested, write '500'. If you are unsure, leave the field blank or provide an estimate.
+            """)
+            
+            technologies = [
+                "Renewable Energy (PV Panels)",
+                "Energy Storage",
+                "Combined Renewable + Storage",
+                "Efficient Lighting",
+                "HVAC Systems",
+                "Building Upgrades",
+                "Machinery Upgrades",
+                "Energy-Efficient Vehicles"
+            ]
+            
+            # Initialize data
+            data_df = {
+                "Technology": technologies,
+                "Breakeven Time (months)": ["" for _ in technologies],
+                "Energy Savings (€/€1000 invested)": ["" for _ in technologies]
+            }
+            
+            df = pd.DataFrame(data_df)
+            
+            # Display the data editor
+            edited_df = st.data_editor(
+                df,
+                use_container_width=True,
+                hide_index=True,
+                disabled=['Technology'],
+                key='edited_df'
+            )
+            
             # # Advisor Background and Experience
             # st.subheader("Advisor Background and Experience")
             # st.number_input("How many years have you been working as an advisor on energy efficiency topics?", 
