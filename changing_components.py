@@ -53,31 +53,31 @@ def initialize_session_state():
         st.session_state['No answer'] = ''
            
     if 'data' not in st.session_state:
-        YEARS_AS_ADVISOR = 'Years as Advisor'
-        JOIN_DATE_EEN = 'Join Date EEN'
-        EXPERT_OR_GENERALIST = 'Expert or Generalist'
-        WORK_DEDICATION = 'Work Dedication'
-        FIRMS_CONSULTED_PW = 'Firms Consulted Per Week'
-        AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
-        NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
-        PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
-        FIRM_HOURLY_FEE = 'Firm Hourly Fee'
-        MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
-        MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
-        FIRM_HOURS_PER_WEEK = 'Firm Consulting Hours per Week'
-        PERSONAL_HOURS_PER_WEEK = 'Personal Consulting Hours per Week'
-        EXPECTED_REDUCTION = 'Expected Number of Firms Achieving Energy Reduction'
-        MEASURES_EFFECTIVENESS_MOST = 'Most Effective Actions or Solutions'
-        MEASURES_EFFECTIVENESS_LEAST = 'Least Effective Actions or Solutions'
-        RANKED_TOPICS_BY_TIME_COVERED = 'Ranked Topics by Time Covered'
-        ADVICE_FOLLOWED_BY_FIRMS = 'Advice Firms Chose to Follow'
-        REASONS_FOR_FIRMS_FOLLOWING = 'Reasons Firms Followed Advice'
-        ADVICE_NOT_FOLLOWED_BY_FIRMS = 'Advice Firms Did Not Follow'
-        REASONS_FIRMS_NOT_FOLLOWING = 'Reasons Firms Did Not Follow Advice'
-        PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
-        IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
-        INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
-        TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
+        # YEARS_AS_ADVISOR = 'Years as Advisor'
+        # JOIN_DATE_EEN = 'Join Date EEN'
+        # EXPERT_OR_GENERALIST = 'Expert or Generalist'
+        # WORK_DEDICATION = 'Work Dedication'
+        # FIRMS_CONSULTED_PW = 'Firms Consulted Per Week'
+        # AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
+        # NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
+        # PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
+        # FIRM_HOURLY_FEE = 'Firm Hourly Fee'
+        # MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
+        # MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
+        # FIRM_HOURS_PER_WEEK = 'Firm Consulting Hours per Week'
+        # PERSONAL_HOURS_PER_WEEK = 'Personal Consulting Hours per Week'
+        # EXPECTED_REDUCTION = 'Expected Number of Firms Achieving Energy Reduction'
+        # MEASURES_EFFECTIVENESS_MOST = 'Most Effective Actions or Solutions'
+        # MEASURES_EFFECTIVENESS_LEAST = 'Least Effective Actions or Solutions'
+        # RANKED_TOPICS_BY_TIME_COVERED = 'Ranked Topics by Time Covered'
+        # ADVICE_FOLLOWED_BY_FIRMS = 'Advice Firms Chose to Follow'
+        # REASONS_FOR_FIRMS_FOLLOWING = 'Reasons Firms Followed Advice'
+        # ADVICE_NOT_FOLLOWED_BY_FIRMS = 'Advice Firms Did Not Follow'
+        # REASONS_FIRMS_NOT_FOLLOWING = 'Reasons Firms Did Not Follow Advice'
+        # PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
+        # IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
+        # INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
+        # TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
         st.session_state['data'] = {
             'User Full Name': [],
             'User Working Position': [],
@@ -98,6 +98,7 @@ def initialize_session_state():
             MEETING_FREQUENCY_ADVISORS: [],
             MEETING_DURATION_ADVISORS: [],
             FIRM_HOURS_PER_WEEK: [],
+            FIRM_FEE_DIFF: [],
             PERSONAL_HOURS_PER_WEEK: [],
             EXPECTED_REDUCTION: [],
             MEASURES_EFFECTIVENESS_MOST: [],
@@ -369,6 +370,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
     NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
     PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
+    FIRM_FEE_DIFF = 'Firm Fee Different'
     FIRM_HOURLY_FEE = 'Firm Hourly Fee'
     MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
     MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
@@ -436,6 +438,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[AVG_WORKING_HOURS_PER_CLIENT].append(safe_var('working_hours'))
     data[NUM_FIRMS_ADVISED].append(safe_var('num_firms_advised'))
     data[PERSONAL_HOURLY_FEE].append(safe_var('personal_hourly_fee'))
+    data[FIRM_FEE_DIFF].append(safe_var('firm_fee_different'))
     data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
     data[MEETING_FREQUENCY_ADVISORS].append(safe_var('meeting_frequency_advisors'))
     data[MEETING_DURATION_ADVISORS].append(safe_var('meeting_duration_advisors'))
