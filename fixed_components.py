@@ -94,41 +94,41 @@ def sustainability_advisors_question():
             st.selectbox("On average, what percentage of your work is related to energy efficiency topics?", options=["Less than 30%", "30-70%", "More than 70%"], key="work_dedication")
             #st.selectbox("How do you usually find new clients or start working with them?", options=["Referrals", "Cold outreach", "Inbound inquiries", "Networking events", "Other"], key="client_acquisition")
             
-            # Workload and Client Interactions
-            st.subheader("Workload and Client Interactions")
-            st.write("For the following questions, please reflect on your typical work within the past 6 months.")
-            st.number_input("How many firms do you advise on energy efficiency topics in a typical work week? (include all clients, not just those within EEN)?", min_value=0, step=1, key="firms_consulted_pw")
-            st.number_input("On average, how many hours in total do you spend working with each client on a project or service?", min_value=0.0, step=0.5, key="working_hours")
+            # # Workload and Client Interactions
+            # st.subheader("Workload and Client Interactions")
+            # st.write("For the following questions, please reflect on your typical work within the past 6 months.")
+            # st.number_input("How many firms do you advise on energy efficiency topics in a typical work week? (include all clients, not just those within EEN)?", min_value=0, step=1, key="firms_consulted_pw")
+            # st.number_input("On average, how many hours in total do you spend working with each client on a project or service?", min_value=0.0, step=0.5, key="working_hours")
 
-            st.number_input("How many firms do you advise on sustainable development practices unrelated to energy efficiency?", min_value=0, step=1, key="num_firms_advised")
-            st.subheader("Consultancy and Advisory Fees")
+            # st.number_input("How many firms do you advise on sustainable development practices unrelated to energy efficiency?", min_value=0, step=1, key="num_firms_advised")
+            # st.subheader("Consultancy and Advisory Fees")
 
-            # Question 1: Per hour consultancy fees
-            st.radio(
-                "What is your per hour consultancy fee, averaged for the last 30 days?",
-                options=[
-                    "Less than €50",
-                    "€50 - €100",
-                    "€100 - €150",
-                    "€150 - €200",
-                    "More than €200"
-                ],
-                key="personal_hourly_fee"
-            )
+            # # Question 1: Per hour consultancy fees
+            # st.radio(
+            #     "What is your per hour consultancy fee, averaged for the last 30 days?",
+            #     options=[
+            #         "Less than €50",
+            #         "€50 - €100",
+            #         "€100 - €150",
+            #         "€150 - €200",
+            #         "More than €200"
+            #     ],
+            #     key="personal_hourly_fee"
+            # )
             
-            # Question 2: Firm's average per hour consultancy fees
-            st.radio(
-                "What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
-                options=[
-                    "Less than €50",
-                    "€50 - €100",
-                    "€100 - €150",
-                    "€150 - €200",
-                    "More than €200",
-                    "Not applicable (same as personal)"
-                ],
-                key="firm_hourly_fee"
-            )
+            # # Question 2: Firm's average per hour consultancy fees
+            # st.radio(
+            #     "What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
+            #     options=[
+            #         "Less than €50",
+            #         "€50 - €100",
+            #         "€100 - €150",
+            #         "€150 - €200",
+            #         "More than €200",
+            #         "Not applicable (same as personal)"
+            #     ],
+            #     key="firm_hourly_fee"
+            # )
             # # Client Engagement and Meeting Effectiveness
             # st.subheader("Client Engagement and Meeting Effectiveness")
             # st.selectbox("How often do you meet with the firms you advise?", options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"], key="meeting_frequency_advisors")
