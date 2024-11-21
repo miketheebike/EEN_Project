@@ -192,9 +192,14 @@ def create_question(jsonfile_name):
 
     y_axis = np.zeros(len(x_axis))
 
-    # Create dataframe for bins and their values
-    data = pd.DataFrame(list(zip(x_axis, y_axis)), columns=[jsonfile_name['column_1'], jsonfile_name['column_2']])
-                
+    # Check if data exists in session state
+    if jsonfile_name['key'] in st.session_state:
+        data = st.session_state[jsonfile_name['key']]
+    else:
+        # Create dataframe for bins and their values
+        data = pd.DataFrame(list(zip(x_axis, y_axis)), columns=[jsonfile_name['column_1'], jsonfile_name['column_2']])
+        st.session_state[jsonfile_name['key']] = data.copy()
+
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
     st.write(jsonfile_name['subtitle_question'])
@@ -227,6 +232,9 @@ def create_question(jsonfile_name):
             # Ensure the probabilities column is numeric
             bins_grid[jsonfile_name['column_2']] = pd.to_numeric(bins_grid[jsonfile_name['column_2']], errors='coerce').fillna(0)
 
+            # Update the session state with the new data
+            st.session_state[jsonfile_name['key']] = bins_grid.copy()
+
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
 
@@ -243,11 +251,9 @@ def create_question(jsonfile_name):
             else:
                 display_message(f'You have inserted {abs(percentage_difference)}% more, please review your percentage distribution.', 'Red')
 
-            # Optional: Add a reset button with a unique key
+            # Add a reset button with a unique key
             if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
-                # Reset the probabilities column to zero
-                bins_grid[jsonfile_name['column_2']] = 0
-                # Update the session state for the data editor
+                # Reset the probabilities column to zero in session state
                 st.session_state[jsonfile_name['key']][jsonfile_name['column_2']] = 0
                 # Re-run the script to refresh the UI
                 st.experimental_rerun()
