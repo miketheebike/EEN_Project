@@ -283,7 +283,7 @@ def sustainability_advisors_question():
             
             # Rank Topics by Time Covered During Meetings
             st.subheader("Rank Topics by Time Covered During Meetings")
-            st.write("17. Please rank the following topics based on the amount of time you typically spend discussing them during meetings with firms. Drag and drop to reorder the list, with the topic you spend the **most time** on at the top.")
+            st.write("Please rank the following topics based on the amount of time you typically spend discussing them during meetings with firms. Drag and drop to reorder the list, with the topic you spend the **most time** on at the top.")
             topics = [
                 "Energy efficiency strategies",
                 "Sustainable development practices",
@@ -356,7 +356,7 @@ def sustainability_advisors_question():
                 "19. What advice have you given to firms that they have **chosen to follow**?",
                 key="advice_followed_by_firms"
             )
-            st.write("20. Why do you think firms chose to follow your advice?")
+            st.write("Why do you think firms chose to follow your advice?")
             st.multiselect(
                 "Select all reasons that apply:",
                 options=[
