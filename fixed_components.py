@@ -398,7 +398,7 @@ def sustainability_advisors_question():
                 st.text_input("Please specify the criterion:", key="investment_criterion_other")
 
             # Technologies Effectiveness Assessment
-            st.subheader("Technologies Effectiveness Assessment (Final Question)")
+            st.subheader("(Final Question) Technologies Effectiveness Assessment")
             st.write("Please complete the table below for each technology. For **Energy Savings**, use the units **euros saved per euro invested (€/€1000 invested)**.")
             st.write("**Note:** Please consider this for a firm of the size you usually advise.")
             
