@@ -72,7 +72,7 @@
       "major_value": "More than 10%",
       "key": "data_editor4",
       "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question6",
+      "num_input_question": "num_input_question4",
       "effect_size": "*Based on your previous answers, we would like to understand the minimum impact you would need to see in order to consider scaling up the EEnergy Efficiency Project to more firms.*\n\n- What is the smallest percentage improvement in the sustainability of the business model that would convince you to expand this program? Please provide a percentage, or simply skip this question if you do not want to answer."
     },
 
@@ -90,7 +90,7 @@
       "major_value": "More than 10%",
       "key": "data_editor5",
       "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question7",
+      "num_input_question": "num_input_question5",
       "effect_size": "*Based on your previous answers, we would like to understand the minimum impact you would need to see in order to consider scaling up this program to more firms.*\n\n- What is the smallest percentage increase in annual revenue that would convince you to expand this program? Please provide a percentage, or simply skip this question if you do not want to answer."
     },
 
@@ -108,7 +108,7 @@
       "major_value": "More than 10%",
       "key": "data_editor6",
       "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question8",
+      "num_input_question": "num_input_question6",
       "effect_size": "*Based on your previous answers, we would like to understand the minimum effect size you would need to see in order to consider scaling up the EEnergy Efficiency Project to more firms.*\n\n- What is the smallest percentage change in the Energy-Revenue cost ratio that would convince you to expand this program? Please provide a percentage, or simply skip this question if you do not want to answer."
     },
 
@@ -126,7 +126,7 @@
       "major_value": "1.0",
       "key": "data_editor7",
       "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question11",
+      "num_input_question": "num_input_question7",
       "effect_size": " "
     },
 
@@ -144,7 +144,7 @@
       "major_value": "1.0",
       "key": "data_editor8",
       "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question10",
+      "num_input_question": "num_input_question8",
       "effect_size": "*Based on your previous answers, we would like to understand the minimum correlation you would need to see in order to consider scaling up this program to more firms.*\n\n- What is the smallest correlation value (between -1 and 1) that would convince you to expand this program? Please provide a value, or simply skip this question if you do not want to answer."
     }
 
