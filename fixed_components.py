@@ -76,7 +76,7 @@ def sustainability_advisors_question():
     if st.session_state['professional_category'] == 'Sustainability Advisor':
         st.write("")
         st.write("")
-        st.subheader(SECTION_ONE_CONT)
+        st.subheader(SECTION_THREE)
         # st.write(SECTION_TWO_NOTES)
         col1, _ = st.columns(2)
 
