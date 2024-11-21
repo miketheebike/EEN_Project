@@ -307,14 +307,7 @@ def sustainability_advisors_question():
             st.write("You ranked the topics as follows (by time covered):")
             st.write(ranked_topics)
             
-            # Firm Size Information
-            st.subheader("Firm Size Information")
-            st.number_input(
-                "What is the typical monthly energy expenditure of the firms you usually advise? (in euros)",
-                min_value=0,
-                step=100,
-                key="typical_monthly_energy_expenditure"
-            )
+
             
             # Technologies Effectiveness Assessment
             st.subheader("Technologies Effectiveness Assessment")
@@ -388,7 +381,14 @@ def sustainability_advisors_question():
                 "22. Why do you think firms chose **not to follow** your advice? (e.g., financial costs, labor costs, other reasons)",
                 key="reasons_firms_not_following"
             )
-            
+            # Firm Size Information
+            st.subheader("Firm Size Information")
+            st.number_input(
+                "What is the typical monthly energy expenditure of the firms you usually advise? (in euros)",
+                min_value=0,
+                step=100,
+                key="typical_monthly_energy_expenditure"
+            )
             # Additional Questions
             st.subheader("Additional Questions")
             st.radio(
