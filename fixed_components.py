@@ -214,13 +214,13 @@ def sustainability_advisors_question():
             ]
             
             # Initialize data
-            data = {
+            data_df = {
                 "Technology": technologies,
                 "Payback Time (months)": ["" for _ in technologies],  # Empty for user input
                 "Energy Savings (kWh/€1000)": ["" for _ in technologies]  # Empty for user input
             }
             
-            df = pd.DataFrame(data)
+            df = pd.DataFrame(data_df)
             
             # Calculate table height dynamically
             row_height = 35  # Approximate row height in pixels
