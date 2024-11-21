@@ -291,7 +291,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     MIN_EFF_SIZE_Q5 = 'Minimum Effect Size Q5'
     MIN_EFF_SIZE_Q6 = 'Minimum Effect Size Q6'
     MIN_EFF_SIZE_Q7 = 'Minimum Effect Size Q7'
-    #MIN_EFF_SIZE_Q8 = 'Minimum Effect Size Q8'
+    MIN_EFF_SIZE_Q8 = 'Minimum Effect Size Q8'
     COST_BENEFIT_RATIO = 'Cost-Benefit Ratio'
     RISK_AVERSION = 'Risk Aversion'
     # Append user inputs to the session state data dictionary
@@ -307,7 +307,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[MIN_EFF_SIZE_Q5].append(safe_var('num_input_question5'))
     data[MIN_EFF_SIZE_Q6].append(safe_var('num_input_question6'))
     data[MIN_EFF_SIZE_Q7].append(safe_var('num_input_question7'))
-    #data[MIN_EFF_SIZE_Q8].append(safe_var('num_input_question8'))
+    data[MIN_EFF_SIZE_Q8].append(safe_var('num_input_question8'))
     data[COST_BENEFIT_RATIO].append(safe_var('cost_benefit'))
     data[RISK_AVERSION].append(safe_var('risk_aversion'))
     
