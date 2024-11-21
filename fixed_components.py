@@ -177,7 +177,9 @@ def sustainability_advisors_question():
                 key="time_covered_ranking", 
                 direction="vertical"
             )
-            
+            # Explicitly store the ranked topics in session state
+            st.session_state['time_covered_ranking'] = ranked_topics
+
             # Display the final ranking
             st.write("You ranked the topics as follows (by time covered):")
             st.write(ranked_topics)
