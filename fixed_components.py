@@ -101,196 +101,196 @@ def sustainability_advisors_question():
             st.number_input("On average, how many hours in total do you spend working with each client on a project or service?", min_value=0.0, step=0.5, key="working_hours")
 
             st.number_input("How many firms do you advise on sustainable development practices unrelated to energy efficiency?", min_value=0, step=1, key="num_firms_advised")
-            
-            # # Client Engagement and Meeting Effectiveness
-            # st.subheader("Client Engagement and Meeting Effectiveness")
-            # st.selectbox("How often do you meet with the firms you advise?", options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"], key="meeting_frequency_advisors")
-            # st.selectbox("How long are your typical meetings with the firms you advise?", options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"], key="meeting_duration_advisors")
-            
-            # st.subheader("Rank Topics by Time Covered During Meetings")
+            st.subheader("Consultancy and Advisory Fees")
 
-            # # List of topics to rank
-            # topics = [
-            #     "Energy efficiency strategies",
-            #     "Sustainable development practices",
-            #     "Cost-saving measures",
-            #     "Regulatory compliance",
-            #     "Technology upgrades",
-            #     "Employee training",
-            #     "Environmental impact assessments",
-            #     "Other"
-            # ]
+            # Question 1: Per hour consultancy fees
+            st.radio(
+                "What is your per hour consultancy fee, averaged for the last 30 days?",
+                options=[
+                    "Less than €50",
+                    "€50 - €100",
+                    "€100 - €150",
+                    "€150 - €200",
+                    "More than €200"
+                ],
+                key="personal_hourly_fee"
+            )
             
-            # # Allow users to rank topics via drag-and-drop
-            # ranked_topics = sort_items(
-            #     topics, 
-            #     key="time_covered_ranking", 
-            #     direction="vertical"
-            # )
+            # Question 2: Firm's average per hour consultancy fees
+            st.radio(
+                "What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
+                options=[
+                    "Less than €50",
+                    "€50 - €100",
+                    "€100 - €150",
+                    "€150 - €200",
+                    "More than €200",
+                    "Not applicable (same as personal)"
+                ],
+                key="firm_hourly_fee"
+            )
+            # Client Engagement and Meeting Effectiveness
+            st.subheader("Client Engagement and Meeting Effectiveness")
+            st.selectbox("How often do you meet with the firms you advise?", options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"], key="meeting_frequency_advisors")
+            st.selectbox("How long are your typical meetings with the firms you advise?", options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"], key="meeting_duration_advisors")
+
             
-            # # Display the final ranking
-            # st.write("You ranked the topics as follows (by time covered):")
-            # st.write(ranked_topics)
-            # # Updated question with multiple-choice selection
-            # #st.multiselect(
-            # #     "What topics do you usually discuss during your meetings with firms? (Select all that apply)", 
-            # #     options=[
-            # #         "Energy efficiency strategies",
-            # #         "Sustainable development practices",
-            # #         "Cost-saving measures",
-            # #         "Regulatory compliance",
-            # #         "Technology upgrades",
-            # #         "Employee training",
-            # #         "Environmental impact assessments",
-            # #         "Other"
-            # #     ], 
-            # #     key="meeting_topics_advisors"
-            # # )
-            # # st.radio(
-            # #     "How effective do you feel your meetings are in supporting firms to improve their sustainability practices?", 
-            # #     options=["Very effective", "Somewhat effective", "Neutral", "Not very effective", "Not effective at all"], 
-            # #     key="meeting_effectiveness_advisors"
-            # # )                
-            # # Shortened technology names
-            # technologies = [
-            #     "Renewable Energy (PV Panels)",
-            #     "Energy Storage",
-            #     "Combined Renewable + Storage",
-            #     "Efficient Lighting",
-            #     "HVAC Systems",
-            #     "Building Upgrades",
-            #     "Machinery Upgrades",
-            #     "Energy-Efficient Vehicles"
-            # ]
+            st.subheader("Consultancy and Advisory Hours")
             
-            # # Initialize data
-            # data = {
-            #     "Technology": technologies,
-            #     "Payback Time (months)": ["" for _ in technologies],  # Empty for user input
-            #     "Energy Savings (kWh/€1000)": ["" for _ in technologies]  # Empty for user input
-            # }
+            # Question 3: Hours of consulting/advice provided by the firm
+            st.number_input(
+                "In the last 30 days, how many hours of consulting/advice per week has your firm provided?",
+                min_value=0,
+                step=1,
+                key="firm_hours_per_week"
+            )
             
-            # df = pd.DataFrame(data)
+            # Question 4: Hours of consulting/advice you provided personally
+            st.number_input(
+                "In the last 30 days, how many hours of consulting/advice per week have you personally provided?",
+                min_value=0,
+                step=1,
+                key="personal_hours_per_week"
+            )
+            # Effectiveness of Energy Efficiency Measures and Expected Outcomes
+            st.write("**Effectiveness and Expected Outcomes**")
+            st.number_input("Of the 707 firms selected for the EENergy project, how many do you expect will achieve a reduction in energy use?", min_value=0, max_value=707, step=1, key="expected_reduction")
+            st.text_area("In your opinion, what actions or solutions are most helpful for reducing a firm's energy use? (What might the success of an average firm depend on?)", key="measures_effectiveness_most")
+            st.text_area("In your opinion, what actions or solutions are least helpful for reducing a firm's energy use?", key="measures_effectiveness_least")            
+            st.subheader("Rank Topics by Time Covered During Meetings")
+
+            # List of topics to rank
+            topics = [
+                "Energy efficiency strategies",
+                "Sustainable development practices",
+                "Cost-saving measures",
+                "Regulatory compliance",
+                "Technology upgrades",
+                "Employee training",
+                "Environmental impact assessments",
+                "Other"
+            ]
             
-            # # Calculate table height dynamically
-            # row_height = 35  # Approximate row height in pixels
-            # table_height = (len(df) + 1) * row_height  # Add 1 for the header
+            # Allow users to rank topics via drag-and-drop
+            ranked_topics = sort_items(
+                topics, 
+                key="time_covered_ranking", 
+                direction="vertical"
+            )
             
-            # # Display the table
-            # st.subheader("Which technologies do you think are most effective in improving energy efficiency?")
-            # st.write("Please complete the table below by filling in the following details for each technology:\n1. **Payback Time (months)**: Write how many months it will take to recover the money spent on this technology (e.g., '12' for 12 months). \n2. **Energy Savings (kWh/€1000)**: How much energy is saved for every €1,000 invested in this technology? For example, if the savings are 500 kWh per €1,000 invested, write ‘500’. If you are unsure, leave the field blank or provide an estimate.")
-            # df['Technology'] = df['Technology'].astype(str)  # Ensure the first column is treated as strings
-            
-            # edited_df = st.data_editor(
-            #     df,
-            #     use_container_width=True,  # Expand to the full container width
-            #     hide_index=True,  # Hide the default index
-            #     disabled=['Technology'],  # Prevent editing the Technology column
-            #     height=table_height  # Adjust height based on rows
-            # )
-            
-            # # Advice Given and Client Reactions
-            # st.subheader("Advice Given and Client Reactions")
-            # st.text_area("What advice have you given to firms that they have chosen to follow?", key="advice_followed_by_firms")
-            # st.write("Why do you think firms chose to follow your advice?")
-            # st.multiselect(
-            #     "Select all reasons that apply:",
+            # Display the final ranking
+            st.write("You ranked the topics as follows (by time covered):")
+            st.write(ranked_topics)
+            # Updated question with multiple-choice selection
+            #st.multiselect(
+            #     "What topics do you usually discuss during your meetings with firms? (Select all that apply)", 
             #     options=[
-            #         "Cost savings were clear and immediate",
-            #         "The advice aligned with their sustainability goals",
-            #         "Regulatory compliance requirements",
-            #         "The technology or solution was easy to implement",
-            #         "Financial support or subsidies were available",
-            #         "Peer or industry pressure",
-            #         "Trust in your expertise or reputation",
+            #         "Energy efficiency strategies",
+            #         "Sustainable development practices",
+            #         "Cost-saving measures",
+            #         "Regulatory compliance",
+            #         "Technology upgrades",
+            #         "Employee training",
+            #         "Environmental impact assessments",
             #         "Other"
-            #     ],
-            #     key="reasons_for_firms_following"
+            #     ], 
+            #     key="meeting_topics_advisors"
             # )
-            # st.text_area("What advice have you given to firms that they decided not to follow?", key="advice_not_followed_by_firms")
-            # st.text_area("Why do you think firms chose not to follow your advice? (e.g., financial costs, labor costs, other reasons)", key="reasons_firms_not_following")
-            # st.subheader("Consultancy and Advisory Fees")
+            # st.radio(
+            #     "How effective do you feel your meetings are in supporting firms to improve their sustainability practices?", 
+            #     options=["Very effective", "Somewhat effective", "Neutral", "Not very effective", "Not effective at all"], 
+            #     key="meeting_effectiveness_advisors"
+            # )                
+            # Shortened technology names
+            technologies = [
+                "Renewable Energy (PV Panels)",
+                "Energy Storage",
+                "Combined Renewable + Storage",
+                "Efficient Lighting",
+                "HVAC Systems",
+                "Building Upgrades",
+                "Machinery Upgrades",
+                "Energy-Efficient Vehicles"
+            ]
+            
+            # Initialize data
+            data = {
+                "Technology": technologies,
+                "Payback Time (months)": ["" for _ in technologies],  # Empty for user input
+                "Energy Savings (kWh/€1000)": ["" for _ in technologies]  # Empty for user input
+            }
+            
+            df = pd.DataFrame(data)
+            
+            # Calculate table height dynamically
+            row_height = 35  # Approximate row height in pixels
+            table_height = (len(df) + 1) * row_height  # Add 1 for the header
+            
+            # Display the table
+            st.subheader("Which technologies do you think are most effective in improving energy efficiency?")
+            st.write("Please complete the table below by filling in the following details for each technology:\n1. **Payback Time (months)**: Write how many months it will take to recover the money spent on this technology (e.g., '12' for 12 months). \n2. **Energy Savings (kWh/€1000)**: How much energy is saved for every €1,000 invested in this technology? For example, if the savings are 500 kWh per €1,000 invested, write ‘500’. If you are unsure, leave the field blank or provide an estimate.")
+            df['Technology'] = df['Technology'].astype(str)  # Ensure the first column is treated as strings
+            
+            edited_df = st.data_editor(
+                df,
+                use_container_width=True,  # Expand to the full container width
+                hide_index=True,  # Hide the default index
+                disabled=['Technology'],  # Prevent editing the Technology column
+                height=table_height  # Adjust height based on rows
+            )
+            
+            # Advice Given and Client Reactions
+            st.subheader("Advice Given and Client Reactions")
+            st.text_area("What advice have you given to firms that they have chosen to follow?", key="advice_followed_by_firms")
+            st.write("Why do you think firms chose to follow your advice?")
+            st.multiselect(
+                "Select all reasons that apply:",
+                options=[
+                    "Cost savings were clear and immediate",
+                    "The advice aligned with their sustainability goals",
+                    "Regulatory compliance requirements",
+                    "The technology or solution was easy to implement",
+                    "Financial support or subsidies were available",
+                    "Peer or industry pressure",
+                    "Trust in your expertise or reputation",
+                    "Other"
+                ],
+                key="reasons_for_firms_following"
+            )
+            st.text_area("What advice have you given to firms that they decided not to follow?", key="advice_not_followed_by_firms")
+            st.text_area("Why do you think firms chose not to follow your advice? (e.g., financial costs, labor costs, other reasons)", key="reasons_firms_not_following")
 
-            # # Question 1: Per hour consultancy fees
-            # st.radio(
-            #     "What is your per hour consultancy fee, averaged for the last 30 days?",
-            #     options=[
-            #         "Less than €50",
-            #         "€50 - €100",
-            #         "€100 - €150",
-            #         "€150 - €200",
-            #         "More than €200"
-            #     ],
-            #     key="personal_hourly_fee"
-            # )
             
-            # # Question 2: Firm's average per hour consultancy fees
-            # st.radio(
-            #     "What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
-            #     options=[
-            #         "Less than €50",
-            #         "€50 - €100",
-            #         "€100 - €150",
-            #         "€150 - €200",
-            #         "More than €200",
-            #         "Not applicable (same as personal)"
-            #     ],
-            #     key="firm_hourly_fee"
-            # )
+            # Add new questions
+            st.subheader("Additional Questions")
             
-            # st.subheader("Consultancy and Advisory Hours")
+            # Question 1: Agreement on personnel training
+            st.radio(
+                "Please indicate agreement with the following statement: "
+                '"For energy efficiency investments to be successful, firms must usually undertake personnel training."',
+                options=[
+                    "1 - Largely disagree",
+                    "2 - Somewhat disagree",
+                    "3 - Neither agree nor disagree",
+                    "4 - Somewhat agree",
+                    "5 - Largely agree"
+                ],
+                key="personnel_training_agreement"
+            )
             
-            # # Question 3: Hours of consulting/advice provided by the firm
-            # st.number_input(
-            #     "In the last 30 days, how many hours of consulting/advice per week has your firm provided?",
-            #     min_value=0,
-            #     step=1,
-            #     key="firm_hours_per_week"
-            # )
+            # Question 2: Important investment criterion
+            st.radio(
+                "What criterion do you consider most important when recommending a particular investment?",
+                options=[
+                    "Payback time / Breakeven time",
+                    "Total cost savings, regardless of time",
+                    "Other (please specify)"
+                ],
+                key="important_investment_criterion"
+            )
             
-            # # Question 4: Hours of consulting/advice you provided personally
-            # st.number_input(
-            #     "In the last 30 days, how many hours of consulting/advice per week have you personally provided?",
-            #     min_value=0,
-            #     step=1,
-            #     key="personal_hours_per_week"
-            # )
-            # # Effectiveness of Energy Efficiency Measures and Expected Outcomes
-            # st.write("**Effectiveness and Expected Outcomes**")
-            # st.number_input("Of the 707 firms selected for the EENergy project, how many do you expect will achieve a reduction in energy use?", min_value=0, max_value=707, step=1, key="expected_reduction")
-            # st.text_area("In your opinion, what actions or solutions are most helpful for reducing a firm's energy use? (What might the success of an average firm depend on?)", key="measures_effectiveness_most")
-            # st.text_area("In your opinion, what actions or solutions are least helpful for reducing a firm's energy use?", key="measures_effectiveness_least")
-            
-            # # Add new questions
-            # st.subheader("Additional Questions")
-            
-            # # Question 1: Agreement on personnel training
-            # st.radio(
-            #     "Please indicate agreement with the following statement: "
-            #     '"For energy efficiency investments to be successful, firms must usually undertake personnel training."',
-            #     options=[
-            #         "1 - Largely disagree",
-            #         "2 - Somewhat disagree",
-            #         "3 - Neither agree nor disagree",
-            #         "4 - Somewhat agree",
-            #         "5 - Largely agree"
-            #     ],
-            #     key="personnel_training_agreement"
-            # )
-            
-            # # Question 2: Important investment criterion
-            # st.radio(
-            #     "What criterion do you consider most important when recommending a particular investment?",
-            #     options=[
-            #         "Payback time / Breakeven time",
-            #         "Total cost savings, regardless of time",
-            #         "Other (please specify)"
-            #     ],
-            #     key="important_investment_criterion"
-            # )
-            
-            # if st.session_state.get("important_investment_criterion") == "Other (please specify)":
-            #     st.text_input("Please specify the criterion:", key="investment_criterion_other")
+            if st.session_state.get("important_investment_criterion") == "Other (please specify)":
+                st.text_input("Please specify the criterion:", key="investment_criterion_other")
 
 
 
