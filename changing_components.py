@@ -79,6 +79,7 @@ def initialize_session_state():
         IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
         INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
         TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
+        TYPICAL_MONTHLY_ENERGY_EXPENDITURE = 'Typical Monthly Energy Expenditure'
         st.session_state['data'] = {
             'User Full Name': [],
             'User Working Position': [],
@@ -104,6 +105,7 @@ def initialize_session_state():
             EXPECTED_REDUCTION: [],
             MEASURES_EFFECTIVENESS_MOST: [],
             MEASURES_EFFECTIVENESS_LEAST: [],
+            
             RANKED_TOPICS_BY_TIME_COVERED: [],
             ADVICE_FOLLOWED_BY_FIRMS: [],
             REASONS_FOR_FIRMS_FOLLOWING: [],
@@ -113,6 +115,7 @@ def initialize_session_state():
             IMPORTANT_INVESTMENT_CRITERION: [],
             INVESTMENT_CRITERION_OTHER: [],
             TECHNOLOGY_EFFECTIVENESS_DATA: [],
+            TYPICAL_MONTHLY_ENERGY_EXPENDITURE: [],
             # 'Meeting Frequency': [],
             # 'Meeting Duration': [],
             # 'Topics Discussed': [],
@@ -389,6 +392,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
     INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
     TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
+    TYPICAL_MONTHLY_ENERGY_EXPENDITURE = 'Typical Monthly Energy Expenditure'
     # MEETING_FREQUENCY = 'Meeting Frequency'
     # MEETING_DURATION = 'Meeting Duration'
     # TOPICS_DISCUSSED = 'Topics Discussed'
@@ -454,6 +458,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[REASONS_FIRMS_NOT_FOLLOWING].append(safe_var('reasons_firms_not_following'))
     data[PERSONNEL_TRAINING_AGREEMENT].append(safe_var('personnel_training_agreement'))
     data[IMPORTANT_INVESTMENT_CRITERION].append(safe_var('important_investment_criterion'))
+    data[TYPICAL_MONTHLY_ENERGY_EXPENDITURE].append(safe_var('typical_monthly_energy_expenditure'))
     # data[MEETING_FREQUENCY].append(safe_var('meeting_frequency_advisors'))
     # data[MEETING_DURATION].append(safe_var('meeting_duration_advisors'))
     # data[TOPICS_DISCUSSED].append(safe_var('meeting_topics_advisors'))
