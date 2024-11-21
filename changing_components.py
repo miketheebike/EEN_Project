@@ -68,6 +68,24 @@ def initialize_session_state():
             'Firms Consulted Per Week': [],
             'Average Working Hours Per Client': [],
             'Number of Firms Advised on Sustainability': [],
+            PERSONAL_HOURLY_FEE: [],
+            FIRM_HOURLY_FEE: [],
+            MEETING_FREQUENCY_ADVISORS: [],
+            MEETING_DURATION_ADVISORS: [],
+            FIRM_HOURS_PER_WEEK: [],
+            PERSONAL_HOURS_PER_WEEK: [],
+            EXPECTED_REDUCTION: [],
+            MEASURES_EFFECTIVENESS_MOST: [],
+            MEASURES_EFFECTIVENESS_LEAST: [],
+            RANKED_TOPICS_BY_TIME_COVERED: [],
+            ADVICE_FOLLOWED_BY_FIRMS: [],
+            REASONS_FOR_FIRMS_FOLLOWING: [],
+            ADVICE_NOT_FOLLOWED_BY_FIRMS: [],
+            REASONS_FIRMS_NOT_FOLLOWING: [],
+            PERSONNEL_TRAINING_AGREEMENT: [],
+            IMPORTANT_INVESTMENT_CRITERION: [],
+            INVESTMENT_CRITERION_OTHER: [],
+            TECHNOLOGY_EFFECTIVENESS_DATA: [],
             # 'Meeting Frequency': [],
             # 'Meeting Duration': [],
             # 'Topics Discussed': [],
@@ -325,6 +343,24 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     FIRMS_CONSULTED_PW = 'Firms Consulted Per Week'
     AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
     NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
+    #PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
+    FIRM_HOURLY_FEE = 'Firm Hourly Fee'
+    MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
+    MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
+    FIRM_HOURS_PER_WEEK = 'Firm Consulting Hours per Week'
+    PERSONAL_HOURS_PER_WEEK = 'Personal Consulting Hours per Week'
+    EXPECTED_REDUCTION = 'Expected Number of Firms Achieving Energy Reduction'
+    MEASURES_EFFECTIVENESS_MOST = 'Most Effective Actions or Solutions'
+    MEASURES_EFFECTIVENESS_LEAST = 'Least Effective Actions or Solutions'
+    RANKED_TOPICS_BY_TIME_COVERED = 'Ranked Topics by Time Covered'
+    ADVICE_FOLLOWED_BY_FIRMS = 'Advice Firms Chose to Follow'
+    REASONS_FOR_FIRMS_FOLLOWING = 'Reasons Firms Followed Advice'
+    ADVICE_NOT_FOLLOWED_BY_FIRMS = 'Advice Firms Did Not Follow'
+    REASONS_FIRMS_NOT_FOLLOWING = 'Reasons Firms Did Not Follow Advice'
+    PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
+    IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
+    INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
+    TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
     # MEETING_FREQUENCY = 'Meeting Frequency'
     # MEETING_DURATION = 'Meeting Duration'
     # TOPICS_DISCUSSED = 'Topics Discussed'
@@ -374,6 +410,21 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[FIRMS_CONSULTED_PW].append(safe_var('firms_consulted_pw'))
     data[AVG_WORKING_HOURS_PER_CLIENT].append(safe_var('working_hours'))
     data[NUM_FIRMS_ADVISED].append(safe_var('num_firms_advised'))
+    data[PERSONAL_HOURLY_FEE].append(safe_var('personal_hourly_fee'))
+    data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
+    data[MEETING_FREQUENCY_ADVISORS].append(safe_var('meeting_frequency_advisors'))
+    data[MEETING_DURATION_ADVISORS].append(safe_var('meeting_duration_advisors'))
+    data[FIRM_HOURS_PER_WEEK].append(safe_var('firm_hours_per_week'))
+    data[PERSONAL_HOURS_PER_WEEK].append(safe_var('personal_hours_per_week'))
+    data[EXPECTED_REDUCTION].append(safe_var('expected_reduction'))
+    data[MEASURES_EFFECTIVENESS_MOST].append(safe_var('measures_effectiveness_most'))
+    data[MEASURES_EFFECTIVENESS_LEAST].append(safe_var('measures_effectiveness_least'))
+    data[ADVICE_FOLLOWED_BY_FIRMS].append(safe_var('advice_followed_by_firms'))
+    data[REASONS_FOR_FIRMS_FOLLOWING].append(safe_var('reasons_for_firms_following'))
+    data[ADVICE_NOT_FOLLOWED_BY_FIRMS].append(safe_var('advice_not_followed_by_firms'))
+    data[REASONS_FIRMS_NOT_FOLLOWING].append(safe_var('reasons_firms_not_following'))
+    data[PERSONNEL_TRAINING_AGREEMENT].append(safe_var('personnel_training_agreement'))
+    data[IMPORTANT_INVESTMENT_CRITERION].append(safe_var('important_investment_criterion'))
     # data[MEETING_FREQUENCY].append(safe_var('meeting_frequency_advisors'))
     # data[MEETING_DURATION].append(safe_var('meeting_duration_advisors'))
     # data[TOPICS_DISCUSSED].append(safe_var('meeting_topics_advisors'))
