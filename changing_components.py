@@ -79,7 +79,7 @@ def initialize_session_state():
         PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
         IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
         INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
-        # TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
+        TECHNOLOGY_EFFECTIVENESS_DATA = 'Technology Effectiveness Data'
         st.session_state['data'] = {
             'User Full Name': [],
             'User Working Position': [],
