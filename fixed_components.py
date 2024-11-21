@@ -62,8 +62,8 @@ def personal_information():
     with col1:
         st.text_input("Please, enter your full name:", key = 'user_full_name')
         st.text_input("Please, enter your working title:", key = 'user_position')
-        st.selectbox('Please, specify your professional category:', ('Policy implementer (EENergy consortium working package leaders)', 'Donor (European Commission)', 'Researcher', 'Sustainability Advisor', 'Entrepreneur/Firm Representative'), key="professional_category")
-
+        st.selectbox('Please, specify your professional category:', ( 'Donor (European Commission)', 'Researcher', 'Sustainability Advisor', 'Entrepreneur/Firm Representative'), key="professional_category")
+#'Policy implementer (EENergy consortium working package leaders)'
 TITLE_INSTRUCTIONS = '''Instructions'''
 
 SUBTITLE_INSTRUCTIONS = '''This example is designed to help you understand how to effectively respond to this survey.
