@@ -69,7 +69,7 @@ if st.session_state['consent'] == True:
     st.write("Saturday and Sunday temperatures in Washington DC for each weekend in 2022. As we might expect, there is a strong correlation between the temperature on a Saturday and on the Sunday, since some parts of the year are hot, and others colder. The correlation here is 0.88.")
     
     q7_config = config['question7']
-    updated_bins_question_7_df, percentage_difference8, num_bins7 = create_question(q7_config)    
+    updated_bins_question_7_df, percentage_difference7, num_bins7 = create_question(q7_config)    
     
     percentage_differences = [percentage_difference1, percentage_difference2] #, percentage_difference3, percentage_difference4, percentage_difference5
     updated_bins_list = [updated_bins_question_1_df, updated_bins_question_2_df]#, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df
