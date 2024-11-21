@@ -494,8 +494,8 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     
     # For the technology effectiveness data
     # Assuming 'edited_df' is the DataFrame after user edits
-    if 'edited_df' in locals():
-        data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df.to_dict(orient='records'))
+    if 'edited_df' in st.session_state:
+        data[TECHNOLOGY_EFFECTIVENESS_DATA].append(st.session_state['edited_df'].to_dict(orient='records'))
     else:
         data[TECHNOLOGY_EFFECTIVENESS_DATA].append(None)
     
