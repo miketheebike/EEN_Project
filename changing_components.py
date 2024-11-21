@@ -312,46 +312,66 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[RISK_AVERSION].append(safe_var('risk_aversion'))
     
     session_state_df = pd.DataFrame(data)
-    if session_state_df.shape[0] > questions_df.shape[0]:
-        questions_df = questions_df.reindex(session_state_df.index, fill_value="empty")
-    elif questions_df.shape[0] > session_state_df.shape[0]:
-        session_state_df = session_state_df.reindex(questions_df.index, fill_value="empty")
-    # Combine `session_state_df` with `questions_df`
     concatenated_df = pd.concat(
-        [session_state_df, questions_df.set_index(session_state_df.index)],
-        axis=1
-    )
-    st.dataframe(concatenated_df)
-    st.dataframe(session_state_df)
-    st.dataframe(questions_df)
-    # Step 3: Authenticate and open Google Sheet
+    [session_state_df, questions_df.set_index(session_state_df.index)],
+    axis=1
+    ).astype(str)  # Convert to string-compatible types
+    
+    # Step 2: Authenticate with Google Sheets
     scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
     client = gspread.authorize(creds)
-
     sheet = client.open("EEN_Survey_Data").sheet1
+    
+    # Step 3: Update headers only if necessary
+    existing_headers = sheet.row_values(1) or []
+    missing_headers = [col for col in concatenated_df.columns if col not in existing_headers]
+    if missing_headers:
+        existing_headers += missing_headers
+        sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
+    
+    # Step 4: Append data in one batch
+    sheet.append_rows(concatenated_df.values.tolist())
+    # if session_state_df.shape[0] > questions_df.shape[0]:
+    #     questions_df = questions_df.reindex(session_state_df.index, fill_value="empty")
+    # elif questions_df.shape[0] > session_state_df.shape[0]:
+    #     session_state_df = session_state_df.reindex(questions_df.index, fill_value="empty")
+    # # Combine `session_state_df` with `questions_df`
+    # concatenated_df = pd.concat(
+    #     [session_state_df, questions_df.set_index(session_state_df.index)],
+    #     axis=1
+    # )
+    # st.dataframe(concatenated_df)
+    # st.dataframe(session_state_df)
+    # st.dataframe(questions_df)
+    # # Step 3: Authenticate and open Google Sheet
+    # scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    # creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
+    # client = gspread.authorize(creds)
 
-    # Step 4: Handle dynamic headers
-    existing_headers = sheet.row_values(1)  # Retrieve headers from the first row
-    if not existing_headers:
-        existing_headers = []
+    # sheet = client.open("EEN_Survey_Data").sheet1
 
-    # Ensure all concatenated DataFrame columns have corresponding headers in the sheet
-    for column_name in concatenated_df.columns:
-        if column_name not in existing_headers:
-            existing_headers.append(column_name)
-            # Update the sheet header row
-            sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
+    # # Step 4: Handle dynamic headers
+    # existing_headers = sheet.row_values(1)  # Retrieve headers from the first row
+    # if not existing_headers:
+    #     existing_headers = []
 
-    # Step 5: Write data to corresponding columns
-    existing_data = sheet.get_all_values()
-    next_row = len(existing_data) + 1
+    # # Ensure all concatenated DataFrame columns have corresponding headers in the sheet
+    # for column_name in concatenated_df.columns:
+    #     if column_name not in existing_headers:
+    #         existing_headers.append(column_name)
+    #         # Update the sheet header row
+    #         sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
 
-    for column_name in concatenated_df.columns:
-        if column_name in existing_headers:
-            col_index = existing_headers.index(column_name) + 1
-            value_to_write = concatenated_df.iloc[-1][column_name]
-            cell_address = gspread.utils.rowcol_to_a1(next_row, col_index)
-            sheet.update(cell_address, value_to_write)
+    # # Step 5: Write data to corresponding columns
+    # existing_data = sheet.get_all_values()
+    # next_row = len(existing_data) + 1
+
+    # for column_name in concatenated_df.columns:
+    #     if column_name in existing_headers:
+    #         col_index = existing_headers.index(column_name) + 1
+    #         value_to_write = concatenated_df.iloc[-1][column_name]
+    #         cell_address = gspread.utils.rowcol_to_a1(next_row, col_index)
+    #         sheet.update(cell_address, value_to_write)
 
     st.success("Data successfully added to the sheet!")
