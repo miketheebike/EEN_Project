@@ -57,9 +57,18 @@ def initialize_session_state():
             'User Full Name': [],
             'User Working Position': [],
             'User Professional Category': [],
+
+
+
+            
             'Years as Advisor': [],
             'Join Date EEN': [],
             'Expert or Generalist': [],
+
+
+
+
+            
             'Minimum Effect Size Q1': [],
             'Minimum Effect Size Q2': [],    
             'Minimum Effect Size Q3': [],
