@@ -352,15 +352,15 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
         [session_state_df, questions_df.set_index(session_state_df.index)],
         axis=1
     )
-    st.dataframe(concatenated_df)
-    st.dataframe(session_state_df)
-    st.dataframe(questions_df)
+
     # Ensure JSON compatibility
     concatenated_df = concatenated_df.applymap(
         lambda x: str(x) if not isinstance(x, (int, float, str)) else x
     )
     concatenated_df = concatenated_df.fillna("")  # Replace NaN/None with an empty string
-
+    st.dataframe(concatenated_df)
+    st.dataframe(session_state_df)
+    st.dataframe(questions_df)
     # Step 2: Authenticate and access Google Sheets
     scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
