@@ -348,39 +348,60 @@ def sustainability_advisors_question():
                 key='edited_df'
             )
             
-            # Advice Given and Client Reactions
-            st.subheader("Advice Given and Client Reactions")
-            
+            # Advice Followed by Firms
             st.subheader("Advice Followed by Firms")
             st.text_area(
                 "19. What advice have you given to firms that they have **chosen to follow**?",
                 key="advice_followed_by_firms"
             )
-            st.write("Why do you think firms chose to follow your advice?")
+            
+            st.write("20. Why do you think firms chose to follow your advice?")
             st.multiselect(
                 "Select all reasons that apply:",
                 options=[
-                    "Cost savings were clear and immediate",
-                    "The advice aligned with their sustainability goals",
+                    "Clear financial benefits",
+                    "Strong management support",
+                    "Technological feasibility",
                     "Regulatory compliance requirements",
-                    "The technology or solution was easy to implement",
-                    "Financial support or subsidies were available",
-                    "Peer or industry pressure",
-                    "Trust in your expertise or reputation",
+                    "Alignment with sustainability goals",
                     "Other"
                 ],
                 key="reasons_for_firms_following"
             )
+            
+            # If 'Other' is selected, provide a text input for additional details
+            if "Other" in st.session_state.get("reasons_for_firms_following", []):
+                st.text_input(
+                    "Please specify other reasons:",
+                    key="reasons_for_firms_following_other"
+                )
             
             st.subheader("Advice Not Followed by Firms")
             st.text_area(
                 "21. What advice have you given to firms that they decided **not to follow**?",
                 key="advice_not_followed_by_firms"
             )
-            st.text_area(
-                "22. Why do you think firms chose **not to follow** your advice? (e.g., financial costs, labor costs, other reasons)",
+            
+            st.write("22. Why do you think firms chose **not to follow** your advice?")
+            st.multiselect(
+                "Select all reasons that apply:",
+                options=[
+                    "Financial costs",
+                    "Labor costs",
+                    "Lack of management support",
+                    "Technological constraints",
+                    "Insufficient perceived benefits",
+                    "Other"
+                ],
                 key="reasons_firms_not_following"
             )
+            
+            # If 'Other' is selected, provide a text input for additional details
+            if "Other" in st.session_state.get("reasons_firms_not_following", []):
+                st.text_input(
+                    "Please specify other reasons:",
+                    key="reasons_firms_not_following_other"
+                )
             # Firm Size Information
             st.subheader("Firm Size Information")
             st.number_input(
