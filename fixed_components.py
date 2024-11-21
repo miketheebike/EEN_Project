@@ -53,8 +53,8 @@ def secrets_to_json():
     }
 
 SECTION_ONE = '''Section 1: Background Information'''
-SECTION_ONE_CONT = '''Section 1: Continued'''
-SECTION_TWO = '''Expectations about the Impacts of the Program'''
+SECTION_THREE = '''Section 3: Final Questions'''
+SECTION_TWO = '''Section 2: Expectations about the Impacts of the Program'''
 
 def personal_information():
     st.subheader("Section 1: Background Information")
