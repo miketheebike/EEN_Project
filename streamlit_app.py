@@ -16,6 +16,7 @@ survey_title_subtitle(config['header'])
 consent_form()
 if st.session_state['consent'] == True:
     personal_information()
+    sustainability_advisors_question()
     st.subheader(SECTION_TWO)
     #st.subheader(SECTION_TWO)
     instructions()
