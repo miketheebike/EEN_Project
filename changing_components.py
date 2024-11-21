@@ -490,7 +490,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     
     # For ranked topics, ensure you capture the user input
     # Assuming 'ranked_topics' is the list of topics after user ranking
-    data[RANKED_TOPICS_BY_TIME_COVERED].append(safe_var('time_covered_ranking'))
+    #data[RANKED_TOPICS_BY_TIME_COVERED].append(safe_var('time_covered_ranking'))
     data[RANKED_TOPICS_BY_TIME_COVERED].append(safe_var('ranked_topics_output'))
     # For the technology effectiveness data
     if 'edited_df' in st.session_state:
