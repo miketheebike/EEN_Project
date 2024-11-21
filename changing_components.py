@@ -64,7 +64,30 @@ def initialize_session_state():
             'Years as Advisor': [],
             'Join Date EEN': [],
             'Expert or Generalist': [],
-
+            'Work Dedication': [],
+            'Firms Consulted Per Week': [],
+            'Average Working Hours Per Client': [],
+            'Number of Firms Advised on Sustainability': [],
+            # 'Meeting Frequency': [],
+            # 'Meeting Duration': [],
+            # 'Topics Discussed': [],
+            # 'Time Covered Rankings': [],
+            # #'Meeting Effectiveness': [],
+            # 'Advice Followed by Firms': [],
+            # 'Reasons Firms Followed Advice': [],
+            # 'Advice Not Followed by Firms': [],
+            # 'Reasons Firms Did Not Follow Advice': [],
+            # 'Expected Reduction in Energy Use': [],
+            # 'Most Effective Measures': [],
+            # 'Least Effective Measures': [],
+            # 'Personal Hourly Fee': [],
+            # 'Firm Hourly Fee': [],
+            # 'Firm Hours Per Week': [],
+            # 'Personal Hours Per Week': [],
+            # 'Reasons for Following Advice': [],
+            # 'Meeting Effectiveness': [],
+            #'Technologies Table': [],
+            #'Ranked Topics': []
 
 
 
@@ -288,13 +311,40 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     questions_df.reset_index(drop=True, inplace=True)
     # Step 2: Retrieve session state data as a DataFrame
     data = st.session_state['data']
-
+    # Create names
     USER_FULL_NAME = 'User Full Name'
     USER_PROF_CATEGORY = 'User Professional Category'
     USER_POSITION = 'User Working Position'
+
+
+    
     YEARS_AS_ADVISOR = 'Years as Advisor'
     JOIN_DATE_EEN = 'Join Date EEN'
     EXPERT_OR_GENERALIST = 'Expert or Generalist'
+    WORK_DEDICATION = 'Work Dedication'
+    FIRMS_CONSULTED_PW = 'Firms Consulted Per Week'
+    AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
+    NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
+    # MEETING_FREQUENCY = 'Meeting Frequency'
+    # MEETING_DURATION = 'Meeting Duration'
+    # TOPICS_DISCUSSED = 'Topics Discussed'
+    # TIME_COVERED_RANKINGS = 'Time Covered Rankings'
+    # ADVICE_FOLLOWED = 'Advice Followed by Firms'
+    # REASONS_FOLLOWED = 'Reasons Firms Followed Advice'
+    # ADVICE_NOT_FOLLOWED = 'Advice Not Followed by Firms'
+    # REASONS_NOT_FOLLOWED = 'Reasons Firms Did Not Follow Advice'
+    # EXPECTED_REDUCTION = 'Expected Reduction in Energy Use'
+    # MOST_EFFECTIVE_MEASURES = 'Most Effective Measures'
+    # LEAST_EFFECTIVE_MEASURES = 'Least Effective Measures'
+    # PERSONAL_HOURLY_FEE = "Personal Hourly Fee"
+    # FIRM_HOURLY_FEE = "Firm Hourly Fee"
+    # FIRM_HOURS_PER_WEEK = "Firm Hours Per Week"
+    # PERSONAL_HOURS_PER_WEEK = "Personal Hours Per Week"
+    # REASONS_FOR_FOLLOWING = "Reasons for Following Advice"
+    # MEETING_EFFECTIVENESS = "Meeting Effectiveness"
+
+
+    
     MIN_EFF_SIZE_Q1 = 'Minimum Effect Size Q1'
     MIN_EFF_SIZE_Q2 = 'Minimum Effect Size Q2'
     MIN_EFF_SIZE_Q3 = 'Minimum Effect Size Q3'
@@ -305,13 +355,46 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     MIN_EFF_SIZE_Q8 = 'Minimum Effect Size Q8'
     COST_BENEFIT_RATIO = 'Cost-Benefit Ratio'
     RISK_AVERSION = 'Risk Aversion'
+
+
+    
     # Append user inputs to the session state data dictionary
     data[USER_FULL_NAME].append(safe_var('user_full_name'))
     data[USER_POSITION].append(safe_var('user_position'))
     data[USER_PROF_CATEGORY].append(safe_var('professional_category'))
+
+
+
+    
+    
     data[YEARS_AS_ADVISOR].append(safe_var('years_as_advisor'))
     data[JOIN_DATE_EEN].append(safe_var('join_date_een'))
     data[EXPERT_OR_GENERALIST].append(safe_var('expert_or_generalist'))
+    data[WORK_DEDICATION].append(safe_var('work_dedication'))
+    data[FIRMS_CONSULTED_PW].append(safe_var('firms_consulted_pw'))
+    data[AVG_WORKING_HOURS_PER_CLIENT].append(safe_var('working_hours'))
+    data[NUM_FIRMS_ADVISED].append(safe_var('num_firms_advised'))
+    # data[MEETING_FREQUENCY].append(safe_var('meeting_frequency_advisors'))
+    # data[MEETING_DURATION].append(safe_var('meeting_duration_advisors'))
+    # data[TOPICS_DISCUSSED].append(safe_var('meeting_topics_advisors'))
+    # data[TIME_COVERED_RANKINGS].append(safe_var('time_covered_ranking'))
+    # data[ADVICE_FOLLOWED].append(safe_var('advice_followed_by_firms'))
+    # data[REASONS_FOLLOWED].append(safe_var('reasons_for_firms_following'))
+    # data[ADVICE_NOT_FOLLOWED].append(safe_var('advice_not_followed_by_firms'))
+    # data[REASONS_NOT_FOLLOWED].append(safe_var('reasons_firms_not_following'))
+    # data[EXPECTED_REDUCTION].append(safe_var('expected_reduction'))
+    # data[MOST_EFFECTIVE_MEASURES].append(safe_var('measures_effectiveness_most'))
+    # data[LEAST_EFFECTIVE_MEASURES].append(safe_var('measures_effectiveness_least'))
+    # data[PERSONAL_HOURLY_FEE].append(safe_var('personal_hourly_fee'))
+    # data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
+    # data[FIRM_HOURS_PER_WEEK].append(safe_var('firm_hours_per_week'))
+    # data[PERSONAL_HOURS_PER_WEEK].append(safe_var('personal_hours_per_week'))
+    # data[REASONS_FOR_FOLLOWING].append(safe_var('reasons_for_firms_following'))
+    # data[MEETING_EFFECTIVENESS].append(safe_var('meeting_effectiveness_advisors'))
+
+
+
+    
     data[MIN_EFF_SIZE_Q1].append(safe_var('num_input_question1'))
     data[MIN_EFF_SIZE_Q2].append(safe_var('num_input_question2'))
     data[MIN_EFF_SIZE_Q3].append(safe_var('num_input_question3'))
