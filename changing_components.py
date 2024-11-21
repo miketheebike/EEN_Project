@@ -208,10 +208,7 @@ def create_question(jsonfile_name):
     if data_key not in st.session_state:
         st.session_state[data_key] = initial_data.copy()
 
-    # Reset button
-    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
-        st.session_state[data_key] = initial_data.copy()
-        st.experimental_rerun()
+
 
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
@@ -219,7 +216,12 @@ def create_question(jsonfile_name):
 
     # Create a container for the data editor and other elements
     data_container = st.container()
-
+    
+    # Reset button
+    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
+        st.session_state[data_key] = initial_data.copy()
+        st.experimental_rerun()
+        
     # Integrate the updated logic for displaying data editor and handling percentages
     with data_container:
         # Create table and plot layout
