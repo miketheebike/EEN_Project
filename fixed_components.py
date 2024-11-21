@@ -90,17 +90,17 @@ def sustainability_advisors_question():
                 key='years_as_advisor')
             st.date_input("In which year did you join EEN?", key="join_date_een")
             st.radio("Do you describe yourself as an energy efficiency expert, generalist, or other?", options=["Energy efficiency expert", "Generalist", "Other"], key="expert_or_generalist")
-            # #st.multiselect("When evaluating energy efficiency, what do you rely on most? (Select all that apply)", options=["Formal training", "Professional knowledge", "Experience", "Combination"], key="assessment_basis")
-            # st.selectbox("On average, what percentage of your work is related to energy efficiency topics?", options=["Less than 30%", "30-70%", "More than 70%"], key="work_dedication")
-            # #st.selectbox("How do you usually find new clients or start working with them?", options=["Referrals", "Cold outreach", "Inbound inquiries", "Networking events", "Other"], key="client_acquisition")
+            # st.multiselect("When evaluating energy efficiency, what do you rely on most? (Select all that apply)", options=["Formal training", "Professional knowledge", "Experience", "Combination"], key="assessment_basis")
+            st.selectbox("On average, what percentage of your work is related to energy efficiency topics?", options=["Less than 30%", "30-70%", "More than 70%"], key="work_dedication")
+            #st.selectbox("How do you usually find new clients or start working with them?", options=["Referrals", "Cold outreach", "Inbound inquiries", "Networking events", "Other"], key="client_acquisition")
             
-            # # Workload and Client Interactions
-            # st.subheader("Workload and Client Interactions")
-            # st.write("For the following questions, please reflect on your typical work with firms in the past week. If the last week was unusual (e.g., due to vacation), please consider a typical week instead.")
-            # st.number_input("How many firms did you advise on energy efficiency topics in the past week (include all clients, not just those within EEN)?", min_value=0, step=1, key="firms_consulted_pw")
-            # st.number_input("On average, how many hours in total do you spend working with each client on a project or service?", min_value=0.0, step=0.5, key="working_hours")
+            # Workload and Client Interactions
+            st.subheader("Workload and Client Interactions")
+            st.write("For the following questions, please reflect on your typical work within the past 6 months.")
+            st.number_input("How many firms do you advise on energy efficiency topics in a typical work week? (include all clients, not just those within EEN)?", min_value=0, step=1, key="firms_consulted_pw")
+            st.number_input("On average, how many hours in total do you spend working with each client on a project or service?", min_value=0.0, step=0.5, key="working_hours")
 
-            # st.number_input("How many firms do you advise on sustainable development practices unrelated to energy efficiency?", min_value=0, step=1, key="num_firms_advised")
+            st.number_input("How many firms do you advise on sustainable development practices unrelated to energy efficiency?", min_value=0, step=1, key="num_firms_advised")
             
             # # Client Engagement and Meeting Effectiveness
             # st.subheader("Client Engagement and Meeting Effectiveness")
@@ -146,11 +146,11 @@ def sustainability_advisors_question():
             # #     ], 
             # #     key="meeting_topics_advisors"
             # # )
-            # st.radio(
-            #     "How effective do you feel your meetings are in supporting firms to improve their sustainability practices?", 
-            #     options=["Very effective", "Somewhat effective", "Neutral", "Not very effective", "Not effective at all"], 
-            #     key="meeting_effectiveness_advisors"
-            # )                
+            # # st.radio(
+            # #     "How effective do you feel your meetings are in supporting firms to improve their sustainability practices?", 
+            # #     options=["Very effective", "Somewhat effective", "Neutral", "Not very effective", "Not effective at all"], 
+            # #     key="meeting_effectiveness_advisors"
+            # # )                
             # # Shortened technology names
             # technologies = [
             #     "Renewable Energy (PV Panels)",
@@ -260,7 +260,37 @@ def sustainability_advisors_question():
             # st.number_input("Of the 707 firms selected for the EENergy project, how many do you expect will achieve a reduction in energy use?", min_value=0, max_value=707, step=1, key="expected_reduction")
             # st.text_area("In your opinion, what actions or solutions are most helpful for reducing a firm's energy use? (What might the success of an average firm depend on?)", key="measures_effectiveness_most")
             # st.text_area("In your opinion, what actions or solutions are least helpful for reducing a firm's energy use?", key="measures_effectiveness_least")
-
+            
+            # # Add new questions
+            # st.subheader("Additional Questions")
+            
+            # # Question 1: Agreement on personnel training
+            # st.radio(
+            #     "Please indicate agreement with the following statement: "
+            #     '"For energy efficiency investments to be successful, firms must usually undertake personnel training."',
+            #     options=[
+            #         "1 - Largely disagree",
+            #         "2 - Somewhat disagree",
+            #         "3 - Neither agree nor disagree",
+            #         "4 - Somewhat agree",
+            #         "5 - Largely agree"
+            #     ],
+            #     key="personnel_training_agreement"
+            # )
+            
+            # # Question 2: Important investment criterion
+            # st.radio(
+            #     "What criterion do you consider most important when recommending a particular investment?",
+            #     options=[
+            #         "Payback time / Breakeven time",
+            #         "Total cost savings, regardless of time",
+            #         "Other (please specify)"
+            #     ],
+            #     key="important_investment_criterion"
+            # )
+            
+            # if st.session_state.get("important_investment_criterion") == "Other (please specify)":
+            #     st.text_input("Please specify the criterion:", key="investment_criterion_other")
 
 
 
