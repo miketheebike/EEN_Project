@@ -220,7 +220,11 @@ def sustainability_advisors_question():
                 "Energy Savings (€/€1000)": ["" for _ in technologies]  # Empty for user input
             }
             
+
             df = pd.DataFrame(data_df)
+            df['Technology'] = df['Technology'].astype(str)
+            
+
             
             # Calculate table height dynamically
             row_height = 35  # Approximate row height in pixels
@@ -236,8 +240,10 @@ def sustainability_advisors_question():
                 use_container_width=True,  # Expand to the full container width
                 hide_index=True,  # Hide the default index
                 disabled=['Technology'],  # Prevent editing the Technology column
-                height=table_height  # Adjust height based on rows
+                height=table_height,# Adjust height based on rows
+                key='edited_df'
             )
+
             
             # Advice Given and Client Reactions
             st.subheader("Advice Given and Client Reactions")
