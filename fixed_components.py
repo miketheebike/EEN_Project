@@ -101,43 +101,60 @@ def sustainability_advisors_question():
                 options=["Less than 30%", "30-70%", "More than 70%"],
                 key="work_dedication"
             )
-            
             # Workload and Client Interactions
             st.subheader("Workload and Client Interactions")
-            st.write("For the following questions, please reflect on your typical work within the **past 6 months**.")
+            st.write("For the following questions, please reflect on your typical work within the **past 3 months**.")
+            
+            # Question 1: Number of firms advised
+            st.write("1. How many firms do you advise in a typical week?")
             st.number_input(
-                "5. How many firms do you advise on energy efficiency topics in a typical work week? (Include all clients, not just those within EEN)",
+                "a. On energy efficiency topics:",
                 min_value=0,
                 step=1,
-                key="firms_consulted_pw"
+                key="firms_energy_efficiency"
             )
             st.number_input(
-                "6. On average, how many hours in total do you spend working with each client on a project or service?",
+                "b. On sustainable development practices unrelated to energy efficiency:",
+                min_value=0,
+                step=1,
+                key="firms_sustainable_dev"
+            )
+            
+            # Question 2: Average hours per client
+            st.number_input(
+                "2. On average, how many hours do you spend working with each client on a project or service?",
                 min_value=0.0,
                 step=0.5,
-                key="working_hours"
+                key="working_hours_per_client"
             )
+            
+            # Question 3: Personal consulting hours per week
             st.number_input(
-                "7. How many firms do you advise on sustainable development practices unrelated to energy efficiency?",
+                "3. In a typical week, how many hours of consulting/advice do you personally provide to clients?",
                 min_value=0,
                 step=1,
-                key="num_firms_advised"
+                key="personal_hours_per_week"
+            )
+            
+            # Question 4: Meeting frequency and duration
+            st.write("4. How frequently do you meet with your clients, and how long are your typical meetings?")
+            st.selectbox(
+                "a. Meeting frequency:",
+                options=["Daily", "Weekly", "Bi-weekly", "Monthly", "Quarterly", "As needed"],
+                key="meeting_frequency"
             )
             st.selectbox(
-                "8. How often do you meet with the firms you advise?",
-                options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"],
-                key="meeting_frequency_advisors"
-            )
-            st.selectbox(
-                "9. How long are your typical meetings with the firms you advise?",
+                "b. Typical meeting duration:",
                 options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"],
-                key="meeting_duration_advisors"
+                key="meeting_duration"
             )
             
             # Consultancy and Advisory Fees
             st.subheader("Consultancy and Advisory Fees")
+            
+            # Question 5: Personal consultancy fee
             st.radio(
-                "10. What is your per hour consultancy fee, averaged for the last 30 days?",
+                "5. What is your personal hourly consultancy fee?",
                 options=[
                     "Less than €50",
                     "€50 - €100",
@@ -147,33 +164,98 @@ def sustainability_advisors_question():
                 ],
                 key="personal_hourly_fee"
             )
+            
+            # Question 6: Firm's consultancy fee if different
             st.radio(
-                "11. What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
-                options=[
-                    "Less than €50",
-                    "€50 - €100",
-                    "€100 - €150",
-                    "€150 - €200",
-                    "More than €200",
-                    "Not applicable (same as personal)"
-                ],
-                key="firm_hourly_fee"
+                "6. Is your firm's hourly consultancy fee different from your personal fee?",
+                options=["Yes", "No"],
+                key="firm_fee_different"
             )
             
-            # Consultancy and Advisory Hours
-            st.subheader("Consultancy and Advisory Hours")
-            st.number_input(
-                "12. In the last 30 days, how many hours of consulting/advice per week has **your firm** provided?",
-                min_value=0,
-                step=1,
-                key="firm_hours_per_week"
-            )
-            st.number_input(
-                "13. In the last 30 days, how many hours of consulting/advice per week have **you personally** provided?",
-                min_value=0,
-                step=1,
-                key="personal_hours_per_week"
-            )
+            if st.session_state.get("firm_fee_different") == "Yes":
+                st.radio(
+                    "6a. What is your firm's average hourly consultancy fee?",
+                    options=[
+                        "Less than €50",
+                        "€50 - €100",
+                        "€100 - €150",
+                        "€150 - €200",
+                        "More than €200"
+                    ],
+                    key="firm_hourly_fee"
+                )
+            # # Workload and Client Interactions
+            # st.subheader("Workload and Client Interactions")
+            # st.write("For the following questions, please reflect on your typical work within the **past 6 months**.")
+            # st.number_input(
+            #     "5. How many firms do you advise on energy efficiency topics in a typical work week? (Include all clients, not just those within EEN)",
+            #     min_value=0,
+            #     step=1,
+            #     key="firms_consulted_pw"
+            # )
+            # st.number_input(
+            #     "6. On average, how many hours in total do you spend working with each client on a project or service?",
+            #     min_value=0.0,
+            #     step=0.5,
+            #     key="working_hours"
+            # )
+            # st.number_input(
+            #     "7. How many firms do you advise on sustainable development practices unrelated to energy efficiency?",
+            #     min_value=0,
+            #     step=1,
+            #     key="num_firms_advised"
+            # )
+            # st.selectbox(
+            #     "8. How often do you meet with the firms you advise?",
+            #     options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"],
+            #     key="meeting_frequency_advisors"
+            # )
+            # st.selectbox(
+            #     "9. How long are your typical meetings with the firms you advise?",
+            #     options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"],
+            #     key="meeting_duration_advisors"
+            # )
+            
+            # # Consultancy and Advisory Fees
+            # st.subheader("Consultancy and Advisory Fees")
+            # st.radio(
+            #     "10. What is your per hour consultancy fee, averaged for the last 30 days?",
+            #     options=[
+            #         "Less than €50",
+            #         "€50 - €100",
+            #         "€100 - €150",
+            #         "€150 - €200",
+            #         "More than €200"
+            #     ],
+            #     key="personal_hourly_fee"
+            # )
+            # st.radio(
+            #     "11. What is the average per hour consultancy fee for your firm, if different, averaged for the last 30 days?",
+            #     options=[
+            #         "Less than €50",
+            #         "€50 - €100",
+            #         "€100 - €150",
+            #         "€150 - €200",
+            #         "More than €200",
+            #         "Not applicable (same as personal)"
+            #     ],
+            #     key="firm_hourly_fee"
+            # )
+            
+            # # Consultancy and Advisory Hours
+            # st.subheader("Consultancy and Advisory Hours")
+            # st.number_input(
+            #     "12. In the last 30 days, how many hours of consulting/advice per week has **your firm** provided?",
+            #     min_value=0,
+            #     step=1,
+            #     key="firm_hours_per_week"
+            # )
+            # st.number_input(
+            #     "13. In the last 30 days, how many hours of consulting/advice per week have **you personally** provided?",
+            #     min_value=0,
+            #     step=1,
+            #     key="personal_hours_per_week"
+            # )
             
             # Effectiveness and Expected Outcomes
             st.subheader("Effectiveness and Expected Outcomes")
