@@ -315,7 +315,7 @@ def sustainability_advisors_question():
             st.write("**Note:** Please consider this for a firm of the size you usually advise.")
             
             st.markdown("""
-            - **Payback Time (months)**: How many months will it take to recover the money spent on this technology (e.g., '12' for 12 months).
+            - **Breakeven Time (months)**: How many months will it take to recover the money spent on this technology (e.g., '12' for 12 months).
             - **Energy Savings (€/€1000 invested)**: How much money is saved for every €1000 invested in this technology? For example, if the savings are €500 per €1000 invested, write '500'. If you are unsure, leave the field blank or provide an estimate.
             """)
             
@@ -333,7 +333,7 @@ def sustainability_advisors_question():
             # Initialize data
             data_df = {
                 "Technology": technologies,
-                "Payback Time (months)": ["" for _ in technologies],
+                "Breakeven Time (months)": ["" for _ in technologies],
                 "Energy Savings (€/€1000 invested)": ["" for _ in technologies]
             }
             
