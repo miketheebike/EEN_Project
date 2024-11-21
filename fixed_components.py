@@ -243,8 +243,7 @@ def sustainability_advisors_question():
                 height=table_height,# Adjust height based on rows
                 key='edited_df'
             )
-            # Ensure that edited_df is stored as a DataFrame
-            st.session_state['edited_df'] = edited_df
+
             
             # Advice Given and Client Reactions
             st.subheader("Advice Given and Client Reactions")
