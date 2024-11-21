@@ -228,7 +228,7 @@ def create_question(jsonfile_name):
 
             # Add reset button with a unique key
             reset = st.button(
-                "Reset values to zero", 
+                "Reset values to zero (Click twice)", 
                 key=f"reset_button_{jsonfile_name['key']}"  # Unique key for the button
             )
             if reset:
