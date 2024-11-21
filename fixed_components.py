@@ -164,7 +164,7 @@ def sustainability_advisors_question():
             
             if st.session_state.get("firm_fee_different") == "Yes":
                 st.radio(
-                    "11a. What is your firm's average per hour consultancy fee?",
+                    "What is your firm's average per hour consultancy fee?",
                     options=[
                         "Less than €50",
                         "€50 - €100",
