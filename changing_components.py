@@ -213,14 +213,16 @@ def create_question(jsonfile_name):
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
     st.write(jsonfile_name['subtitle_question'])
+    
+    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
+        st.session_state[data_key] = initial_data.copy()
+        st.experimental_rerun()
 
     # Create a container for the data editor and other elements
     data_container = st.container()
     
     # Reset button
-    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
-        st.session_state[data_key] = initial_data.copy()
-        st.experimental_rerun()
+
         
     # Integrate the updated logic for displaying data editor and handling percentages
     with data_container:
