@@ -112,11 +112,29 @@
       "effect_size": "*Based on your previous answers, we would like to understand the minimum effect size you would need to see in order to consider scaling up the EEnergy Efficiency Project to more firms.*\n\n- What is the smallest percentage change in the Energy-Revenue cost ratio that would convince you to expand this program? Please provide a percentage, or simply skip this question if you do not want to answer."
     },
 
-    "question7": {
+    "questionX": {
+      "question_number": "Question X",
+      "key_form": "key_formX",
+      "title_question": "Correlation Example",
+      "subtitle_question": "In statistics, the correlation is a measure of how strongly two outcomes are linearly related. The correlation lies between -1 and 1.  \nA correlation of -1 means that variables move perfectly in the opposite direction to one another, so that if one is high, the other is low.  \nA 0 correlation means no relationship between them, while a correlation of +1 means the two move linearly together.  \nA positive number between 0 and 1 means the two don't move perfectly together, but that you are somewhat more likely to see positive impacts in one variable when you see them somewhere else. \nTo make sure this is clear, let's first consider an example on the weather.  \nWhat do you think is the correlation between the temperature on a Saturday and on a Sunday for all the weekends in a year?  \n_Please allocate the probabilities in the cells corresponding to your beliefs._",
+      "column_1": "Correlation",
+      "column_2": "Probabilities",
+      "minor_value": "-1.0",
+      "min_value_graph": -1,
+      "max_value_graph": 1,
+      "step_size_graph": 0.2,
+      "major_value": "1.0",
+      "key": "data_editorX",
+      "title_barchart": "Distribution of your Beliefs",
+      "num_input_question": "num_input_questionX",
+      "effect_size": " "
+    },
+
+    "question&": {
       "question_number": "Question 7",
       "key_form": "key_form7",
-      "title_question": "Question 7 - Correlation Example",
-      "subtitle_question": "In statistics, the correlation is a measure of how strongly two outcomes are linearly related. The correlation lies between -1 and 1.  \nA correlation of -1 means that variables move perfectly in the opposite direction to one another, so that if one is high, the other is low.  \nA 0 correlation means no relationship between them, while a correlation of +1 means the two move linearly together.  \nA positive number between 0 and 1 means the two don't move perfectly together, but that you are somewhat more likely to see positive impacts in one variable when you see them somewhere else. \nTo make sure this is clear, let's first consider an example on the weather.  \nWhat do you think is the correlation between the temperature on a Saturday and on a Sunday for all the weekends in a year?  \n_Please allocate the probabilities in the cells corresponding to your beliefs._",
+      "title_question": "Question & - Correlation Between Effects of the Program in Another Country",
+      "subtitle_question": "We would like you to express your beliefs about the **correlation** you would expect to see between effects of the program in your country and those in another country in the region.  \nA negative correlation (between -1 and 0) means that if a program has a negative impact somewhere else this makes it more likely it has a positive impact in your country.  \nA 0 correlation means no relationship between what you find elsewhere and what you expect to see in your country, while a positive correlation (between 0 and 1) means that a high impact somewhere else corresponds to also a high impact in your country. \n_Please allocate the probabilities in the cells corresponding to your beliefs._",
       "column_1": "Correlation",
       "column_2": "Probabilities",
       "minor_value": "-1.0",
@@ -127,24 +145,6 @@
       "key": "data_editor7",
       "title_barchart": "Distribution of your Beliefs",
       "num_input_question": "num_input_question7",
-      "effect_size": " "
-    },
-
-    "question8": {
-      "question_number": "Question 8",
-      "key_form": "key_form8",
-      "title_question": "Question 8 - Correlation Between Effects of the Program in Another Country",
-      "subtitle_question": "We would like you to express your beliefs about the **correlation** you would expect to see between effects of the program in your country and those in another country in the region.  \nA negative correlation (between -1 and 0) means that if a program has a negative impact somewhere else this makes it more likely it has a positive impact in your country.  \nA 0 correlation means no relationship between what you find elsewhere and what you expect to see in your country, while a positive correlation (between 0 and 1) means that a high impact somewhere else corresponds to also a high impact in your country. \n_Please allocate the probabilities in the cells corresponding to your beliefs._",
-      "column_1": "Correlation",
-      "column_2": "Probabilities",
-      "minor_value": "-1.0",
-      "min_value_graph": -1,
-      "max_value_graph": 1,
-      "step_size_graph": 0.2,
-      "major_value": "1.0",
-      "key": "data_editor8",
-      "title_barchart": "Distribution of your Beliefs",
-      "num_input_question": "num_input_question8",
       "effect_size": "*Based on your previous answers, we would like to understand the minimum correlation you would need to see in order to consider scaling up this program to more firms.*\n\n- What is the smallest correlation value (between -1 and 1) that would convince you to expand this program? Please provide a value, or simply skip this question if you do not want to answer."
     }
 
