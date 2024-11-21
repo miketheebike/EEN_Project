@@ -133,7 +133,7 @@
     "question7": {
       "question_number": "Question 7",
       "key_form": "key_form7",
-      "title_question": "Question & - Correlation Between Effects of the Program in Another Country",
+      "title_question": "Question 7 - Correlation Between Effects of the Program in Another Country",
       "subtitle_question": "We would like you to express your beliefs about the **correlation** you would expect to see between effects of the program in your country and those in another country in the region.  \nA negative correlation (between -1 and 0) means that if a program has a negative impact somewhere else this makes it more likely it has a positive impact in your country.  \nA 0 correlation means no relationship between what you find elsewhere and what you expect to see in your country, while a positive correlation (between 0 and 1) means that a high impact somewhere else corresponds to also a high impact in your country. \n_Please allocate the probabilities in the cells corresponding to your beliefs._",
       "column_1": "Correlation",
       "column_2": "Probabilities",
