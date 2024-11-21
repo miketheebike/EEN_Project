@@ -165,10 +165,10 @@ def survey_title_subtitle(header_config):
     st.write(header_config['survey_description'])
     
 def create_question(jsonfile_name):
+    import streamlit as st
     import numpy as np
     import pandas as pd
-    import plotly.graph_objects as go
-    import streamlit as st
+    import plotly.graph_objs as go
 
     minor_value = str(jsonfile_name['minor_value'])
     min_value = jsonfile_name['min_value_graph']
@@ -177,12 +177,9 @@ def create_question(jsonfile_name):
     major_value = str(jsonfile_name['major_value'])
 
     # Create a list of ranges based on the provided values
-    x_axis = [minor_value] + [
-        f"{round(i, 1)}% to {round((i + interval - 0.01), 2)}%" 
-        for i in np.arange(min_value, max_value, interval)
-    ] + [major_value]
+    x_axis = [minor_value] + [f"{round(i, 1)}% to {round((i + interval - 0.01), 2)}%" for i in np.arange(min_value, max_value, interval)] + [major_value]
 
-    # Handle special cases based on min_value_graph
+    # Adjustments based on specific min_value_graph
     if jsonfile_name['min_value_graph'] == -1:
         x_axis.insert(6, "0%")
         x_axis[1] = '-0.99% to -0.81%'
@@ -190,40 +187,25 @@ def create_question(jsonfile_name):
     elif jsonfile_name['min_value_graph'] == -10:
         x_axis.insert(3, "0%")
         x_axis[5] = '0.01% to 4.99%'
-    elif jsonfile_name['min_value_graph'] == 0:
+    elif jsonfile_name['min_value_graph'] == 0:    
         x_axis[1] = '0.01% to 4.99%'
 
     y_axis = np.zeros(len(x_axis))
 
-    # Create initial data frame
-    initial_data = pd.DataFrame(
-        list(zip(x_axis, y_axis)), 
-        columns=[jsonfile_name['column_1'], jsonfile_name['column_2']]
-    )
+    # Create dataframe for bins and their values
+    data = pd.DataFrame(list(zip(x_axis, y_axis)), columns=[jsonfile_name['column_1'], jsonfile_name['column_2']])
 
-    # Key for storing data in session state
-    data_key = f"data_{jsonfile_name['key']}"
-
-    # If data not in session_state, initialize
-    if data_key not in st.session_state:
-        st.session_state[data_key] = initial_data.copy()
-
-
+    # Initialize session state for data
+    if f"data_{jsonfile_name['key']}" not in st.session_state:
+        st.session_state[f"data_{jsonfile_name['key']}"] = data.copy()
 
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
     st.write(jsonfile_name['subtitle_question'])
-    
-    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
-        st.session_state[data_key] = initial_data.copy()
-        st.experimental_rerun()
 
     # Create a container for the data editor and other elements
     data_container = st.container()
-    
-    # Reset button
 
-        
     # Integrate the updated logic for displaying data editor and handling percentages
     with data_container:
         # Create table and plot layout
@@ -232,11 +214,11 @@ def create_question(jsonfile_name):
         with table:
             # Calculate the height based on the number of rows
             row_height = 35  # Adjust as necessary based on row size
-            table_height = ((len(st.session_state[data_key]) + 1) * row_height)
+            table_height = ((len(data)+1) * row_height) 
 
             # Display the data editor
             bins_grid = st.data_editor(
-                st.session_state[data_key],
+                st.session_state[f"data_{jsonfile_name['key']}"],
                 key=jsonfile_name['key'],
                 hide_index=True,
                 use_container_width=True,
@@ -244,16 +226,18 @@ def create_question(jsonfile_name):
                 height=table_height
             )
 
-            # After the data editor, update the data in session_state
-            st.session_state[data_key] = bins_grid.copy()
+            # Add reset button
+            reset = st.button("Reset values to zero")
+            if reset:
+                bins_grid[jsonfile_name['column_2']] = 0
 
-            # Replace None or NaN values in the probabilities column with zero
-            bins_grid[jsonfile_name['column_2']] = bins_grid[jsonfile_name['column_2']].fillna(0)
-
-            # Ensure the probabilities column is numeric
+            # Ensure the probabilities are numeric and replace None or invalid entries with zero
             bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
                 bins_grid[jsonfile_name['column_2']], errors='coerce'
             ).fillna(0)
+
+            # Update the session state
+            st.session_state[f"data_{jsonfile_name['key']}"] = bins_grid.copy()
 
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
@@ -275,7 +259,7 @@ def create_question(jsonfile_name):
             # Extract the updated values from the second column
             updated_values = bins_grid[jsonfile_name['column_2']]
 
-            # Plot configuration to hide the menu and make the plot static
+            # Plot configuration
             config = {'displayModeBar': False, "staticPlot": True}
 
             # Plot the updated values as a bar plot
@@ -293,7 +277,7 @@ def create_question(jsonfile_name):
 
             fig.update_layout(
                 title={
-                    'text': "Probability Distribution",
+                    'text': "Probability distribution",
                     'y': 0.9,
                     'x': 0.5,
                     'xanchor': 'center',
@@ -322,8 +306,7 @@ def create_question(jsonfile_name):
             )
             st.plotly_chart(fig, config=config, use_container_width=True)
 
-    return bins_grid.copy(), percentage_difference, len(bins_grid)
-
+    return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
 # def create_question(jsonfile_name):
 #     minor_value = str(jsonfile_name['minor_value'])
 #     min_value = jsonfile_name['min_value_graph']
