@@ -177,7 +177,10 @@ def create_question(jsonfile_name):
     major_value = str(jsonfile_name['major_value'])
 
     # Create a list of ranges based on the provided values
-    x_axis = [minor_value] + [f"{round(i, 1)}% to {round((i + interval - 0.01), 2)}%" for i in np.arange(min_value, max_value, interval)] + [major_value]
+    x_axis = [minor_value] + [
+        f"{round(i, 1)}% to {round((i + interval - 0.01), 2)}%" 
+        for i in np.arange(min_value, max_value, interval)
+    ] + [major_value]
 
     # Handle special cases based on min_value_graph
     if jsonfile_name['min_value_graph'] == -1:
@@ -187,18 +190,28 @@ def create_question(jsonfile_name):
     elif jsonfile_name['min_value_graph'] == -10:
         x_axis.insert(3, "0%")
         x_axis[5] = '0.01% to 4.99%'
-    elif jsonfile_name['min_value_graph'] == 0:    
+    elif jsonfile_name['min_value_graph'] == 0:
         x_axis[1] = '0.01% to 4.99%'
 
     y_axis = np.zeros(len(x_axis))
 
-    # Check if data exists in session state
-    if jsonfile_name['key'] in st.session_state:
-        data = st.session_state[jsonfile_name['key']]
-    else:
-        # Create dataframe for bins and their values
-        data = pd.DataFrame(list(zip(x_axis, y_axis)), columns=[jsonfile_name['column_1'], jsonfile_name['column_2']])
-        st.session_state[jsonfile_name['key']] = data.copy()
+    # Create initial data frame
+    initial_data = pd.DataFrame(
+        list(zip(x_axis, y_axis)), 
+        columns=[jsonfile_name['column_1'], jsonfile_name['column_2']]
+    )
+
+    # Key for storing data in session state
+    data_key = f"data_{jsonfile_name['key']}"
+
+    # If data not in session_state, initialize
+    if data_key not in st.session_state:
+        st.session_state[data_key] = initial_data.copy()
+
+    # Reset button
+    if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
+        st.session_state[data_key] = initial_data.copy()
+        st.experimental_rerun()
 
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
@@ -215,25 +228,28 @@ def create_question(jsonfile_name):
         with table:
             # Calculate the height based on the number of rows
             row_height = 35  # Adjust as necessary based on row size
-            table_height = ((len(data)+1) * row_height) 
+            table_height = ((len(st.session_state[data_key]) + 1) * row_height)
+
             # Display the data editor
             bins_grid = st.data_editor(
-                data, 
-                key=jsonfile_name['key'], 
-                hide_index=True, 
-                use_container_width=True, 
+                st.session_state[data_key],
+                key=jsonfile_name['key'],
+                hide_index=True,
+                use_container_width=True,
                 disabled=[jsonfile_name['column_1']],
                 height=table_height
             )
+
+            # After the data editor, update the data in session_state
+            st.session_state[data_key] = bins_grid.copy()
 
             # Replace None or NaN values in the probabilities column with zero
             bins_grid[jsonfile_name['column_2']] = bins_grid[jsonfile_name['column_2']].fillna(0)
 
             # Ensure the probabilities column is numeric
-            bins_grid[jsonfile_name['column_2']] = pd.to_numeric(bins_grid[jsonfile_name['column_2']], errors='coerce').fillna(0)
-
-            # Update the session state with the new data
-            st.session_state[jsonfile_name['key']] = bins_grid.copy()
+            bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
+                bins_grid[jsonfile_name['column_2']], errors='coerce'
+            ).fillna(0)
 
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
@@ -251,25 +267,18 @@ def create_question(jsonfile_name):
             else:
                 display_message(f'You have inserted {abs(percentage_difference)}% more, please review your percentage distribution.', 'Red')
 
-            # Add a reset button with a unique key
-            if st.button('Reset values to zero', key=f"reset_button_{jsonfile_name['key']}"):
-                # Reset the probabilities column to zero in session state
-                st.session_state[jsonfile_name['key']][jsonfile_name['column_2']] = 0
-                # Re-run the script to refresh the UI
-                st.experimental_rerun()
-
         with plot:
             # Extract the updated values from the second column
             updated_values = bins_grid[jsonfile_name['column_2']]
 
             # Plot configuration to hide the menu and make the plot static
-            config = {'displayModeBar': False, "staticPlot": True }
-                    
+            config = {'displayModeBar': False, "staticPlot": True}
+
             # Plot the updated values as a bar plot
             fig = go.Figure()
             fig.add_trace(go.Bar(
-                x=bins_grid[jsonfile_name['column_1']], 
-                y=updated_values, 
+                x=bins_grid[jsonfile_name['column_1']],
+                y=updated_values,
                 marker_color='rgba(50, 205, 50, 0.9)',  # A nice bright green
                 marker_line_color='rgba(0, 128, 0, 1.0)',  # Dark green outline for contrast
                 marker_line_width=2,  # Width of the bar outline
@@ -281,15 +290,15 @@ def create_question(jsonfile_name):
             fig.update_layout(
                 title={
                     'text': "Probability Distribution",
-                    'y':0.9,
-                    'x':0.5,
+                    'y': 0.9,
+                    'x': 0.5,
                     'xanchor': 'center',
                     'yanchor': 'top'
                 },
                 xaxis_title="Expectation Range",
                 yaxis_title="Probability (%)",
                 yaxis=dict(
-                    range=[0, 100], 
+                    range=[0, 100],
                     gridcolor='rgba(255, 255, 255, 0.2)',  # Light grid on dark background
                     showline=True,
                     linewidth=2,
@@ -309,8 +318,7 @@ def create_question(jsonfile_name):
             )
             st.plotly_chart(fig, config=config, use_container_width=True)
 
-    return pd.DataFrame(bins_grid), percentage_difference, len(bins_grid)
-
+    return bins_grid.copy(), percentage_difference, len(bins_grid)
 
 # def create_question(jsonfile_name):
 #     minor_value = str(jsonfile_name['minor_value'])
