@@ -314,66 +314,66 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     session_state_df = pd.DataFrame(data)
 
 
-    # Step 1: Align and concatenate DataFrames
-    if session_state_df.shape[0] > questions_df.shape[0]:
-        questions_df = questions_df.reindex(session_state_df.index, fill_value=None)
-    elif questions_df.shape[0] > session_state_df.shape[0]:
-        session_state_df = session_state_df.reindex(questions_df.index, fill_value=None)
-    concatenated_df = pd.concat(
-    [session_state_df, questions_df.set_index(session_state_df.index)],
-    axis=1
-    ).astype(str)  # Convert to string-compatible types
-    
-    # Step 2: Authenticate with Google Sheets
-    scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
-    client = gspread.authorize(creds)
-    sheet = client.open("EEN_Survey_Data").sheet1
-    
-    # Step 3: Update headers only if necessary
-    existing_headers = sheet.row_values(1) or []
-    missing_headers = [col for col in concatenated_df.columns if col not in existing_headers]
-    if missing_headers:
-        existing_headers += missing_headers
-        sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
-    
-    # Step 4: Append data in one batch
-    sheet.append_rows(concatenated_df.values.tolist())
-
-
-
+    # # Step 1: Align and concatenate DataFrames
     # if session_state_df.shape[0] > questions_df.shape[0]:
     #     questions_df = questions_df.reindex(session_state_df.index, fill_value=None)
     # elif questions_df.shape[0] > session_state_df.shape[0]:
     #     session_state_df = session_state_df.reindex(questions_df.index, fill_value=None)
-
-    # # Concatenate the DataFrames
     # concatenated_df = pd.concat(
-    #     [session_state_df, questions_df.set_index(session_state_df.index)],
-    #     axis=1
-    # )
-
-    # # Ensure JSON compatibility
-    # concatenated_df = concatenated_df.applymap(
-    #     lambda x: str(x) if not isinstance(x, (int, float, str)) else x
-    # )
-    # concatenated_df = concatenated_df.fillna("")  # Replace NaN/None with an empty string
-
-    # # Step 2: Authenticate and access Google Sheets
+    # [session_state_df, questions_df.set_index(session_state_df.index)],
+    # axis=1
+    # ).astype(str)  # Convert to string-compatible types
+    
+    # # Step 2: Authenticate with Google Sheets
     # scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     # creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
     # client = gspread.authorize(creds)
-    # sheet = client.open(spreadsheet_name).sheet1
-
-    # # Step 3: Handle dynamic headers
+    # sheet = client.open("EEN_Survey_Data").sheet1
+    
+    # # Step 3: Update headers only if necessary
     # existing_headers = sheet.row_values(1) or []
     # missing_headers = [col for col in concatenated_df.columns if col not in existing_headers]
     # if missing_headers:
     #     existing_headers += missing_headers
     #     sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
-
-    # # Step 4: Append rows in one batch
+    
+    # # Step 4: Append data in one batch
     # sheet.append_rows(concatenated_df.values.tolist())
+
+
+
+    if session_state_df.shape[0] > questions_df.shape[0]:
+        questions_df = questions_df.reindex(session_state_df.index, fill_value=None)
+    elif questions_df.shape[0] > session_state_df.shape[0]:
+        session_state_df = session_state_df.reindex(questions_df.index, fill_value=None)
+
+    # Concatenate the DataFrames
+    concatenated_df = pd.concat(
+        [session_state_df, questions_df.set_index(session_state_df.index)],
+        axis=1
+    )
+
+    # Ensure JSON compatibility
+    concatenated_df = concatenated_df.applymap(
+        lambda x: str(x) if not isinstance(x, (int, float, str)) else x
+    )
+    concatenated_df = concatenated_df.fillna("")  # Replace NaN/None with an empty string
+
+    # Step 2: Authenticate and access Google Sheets
+    scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
+    client = gspread.authorize(creds)
+    sheet = client.open(spreadsheet_name).sheet1
+
+    # Step 3: Handle dynamic headers
+    existing_headers = sheet.row_values(1) or []
+    missing_headers = [col for col in concatenated_df.columns if col not in existing_headers]
+    if missing_headers:
+        existing_headers += missing_headers
+        sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
+
+    # Step 4: Append rows in one batch
+    sheet.append_rows(concatenated_df.values.tolist())
 
 
 
