@@ -16,7 +16,7 @@ survey_title_subtitle(config['header'])
 consent_form()
 if st.session_state['consent'] == True:
     personal_information()
-    sustainability_advisors_question()
+    
     st.subheader(SECTION_TWO)
     #st.subheader(SECTION_TWO)
     instructions()
@@ -131,6 +131,7 @@ if st.session_state['consent'] == True:
     # col1, _= st.columns(2)
     # with col1:   
     #     st.slider("Please move the slider to indicate your preference.", 1, 10, key= "risk_aversion")
+    sustainability_advisors_question()
     
     submit = st.button("Submit", on_click= add_submission, args = ([updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df]))
     
