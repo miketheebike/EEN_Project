@@ -19,6 +19,7 @@ from streamlit_sortables import sort_items
 # Insert consent
 def add_consent():
     st.session_state['consent'] = True
+    st.session_state['data']['Consent'] = ['Yes']
       
 
 # Define a function to handle the Next button
