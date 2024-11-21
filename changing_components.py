@@ -219,15 +219,18 @@ def create_question(jsonfile_name):
             # Display the data editor
             bins_grid = st.data_editor(
                 st.session_state[f"data_{jsonfile_name['key']}"],
-                key=jsonfile_name['key'],
+                key=f"data_editor_{jsonfile_name['key']}",  # Ensure unique key for data editor
                 hide_index=True,
                 use_container_width=True,
                 disabled=[jsonfile_name['column_1']],
                 height=table_height
             )
 
-            # Add reset button
-            reset = st.button("Reset values to zero")
+            # Add reset button with a unique key
+            reset = st.button(
+                "Reset values to zero", 
+                key=f"reset_button_{jsonfile_name['key']}"  # Unique key for the button
+            )
             if reset:
                 bins_grid[jsonfile_name['column_2']] = 0
 
