@@ -307,13 +307,25 @@ def sustainability_advisors_question():
             st.write("You ranked the topics as follows (by time covered):")
             st.write(ranked_topics)
             
+            # Firm Size Information
+            st.subheader("Firm Size Information")
+            st.number_input(
+                "What is the typical monthly energy expenditure of the firms you usually advise? (in euros)",
+                min_value=0,
+                step=100,
+                key="typical_monthly_energy_expenditure"
+            )
+            
             # Technologies Effectiveness Assessment
             st.subheader("Technologies Effectiveness Assessment")
-            st.write("18. Please complete the table below by filling in the following details for each technology:")
+            st.write("Please complete the table below for each technology. For **Energy Savings**, use the units **euros saved per euro invested (€/€ invested)**.")
+            st.write("**Note:** Please consider this for a firm of the size you usually advise.")
+            
             st.markdown("""
             - **Payback Time (months)**: How many months will it take to recover the money spent on this technology (e.g., '12' for 12 months).
-            - **Energy Savings (kWh/€1000)**: How much energy is saved for every €1,000 invested in this technology? For example, if the savings are 500 kWh per €1,000 invested, write ‘500’. If you are unsure, leave the field blank or provide an estimate.
+            - **Energy Savings (€/€ invested)**: How much money is saved for every euro invested in this technology? For example, if the savings are €0.50 per €1 invested, write '0.5'. If you are unsure, leave the field blank or provide an estimate.
             """)
+            
             technologies = [
                 "Renewable Energy (PV Panels)",
                 "Energy Storage",
@@ -329,7 +341,7 @@ def sustainability_advisors_question():
             data_df = {
                 "Technology": technologies,
                 "Payback Time (months)": ["" for _ in technologies],
-                "Energy Savings (kWh/€1000)": ["" for _ in technologies]
+                "Energy Savings (€/€ invested)": ["" for _ in technologies]
             }
             
             df = pd.DataFrame(data_df)
