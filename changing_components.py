@@ -61,8 +61,6 @@ def initialize_session_state():
         AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
         NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
         PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
-        FIRM_FEE_DIFF = 'Firm fee different'
-        
         FIRM_HOURLY_FEE = 'Firm Hourly Fee'
         MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
         MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
@@ -100,7 +98,6 @@ def initialize_session_state():
             MEETING_FREQUENCY_ADVISORS: [],
             MEETING_DURATION_ADVISORS: [],
             FIRM_HOURS_PER_WEEK: [],
-            FIRM_FEE_DIFF: [],
             PERSONAL_HOURS_PER_WEEK: [],
             EXPECTED_REDUCTION: [],
             MEASURES_EFFECTIVENESS_MOST: [],
@@ -372,7 +369,6 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
     NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
     PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
-    FIRM_FEE_DIFF = 'Firm Fee Different'
     FIRM_HOURLY_FEE = 'Firm Hourly Fee'
     MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
     MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
@@ -440,7 +436,6 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[AVG_WORKING_HOURS_PER_CLIENT].append(safe_var('working_hours'))
     data[NUM_FIRMS_ADVISED].append(safe_var('num_firms_advised'))
     data[PERSONAL_HOURLY_FEE].append(safe_var('personal_hourly_fee'))
-    data[FIRM_FEE_DIFF].append(safe_var('firm_fee_different'))
     data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
     data[MEETING_FREQUENCY_ADVISORS].append(safe_var('meeting_frequency_advisors'))
     data[MEETING_DURATION_ADVISORS].append(safe_var('meeting_duration_advisors'))
