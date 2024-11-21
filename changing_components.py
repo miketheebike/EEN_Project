@@ -73,8 +73,10 @@ def initialize_session_state():
         RANKED_TOPICS_BY_TIME_COVERED = 'Ranked Topics by Time Covered'
         ADVICE_FOLLOWED_BY_FIRMS = 'Advice Firms Chose to Follow'
         REASONS_FOR_FIRMS_FOLLOWING = 'Reasons Firms Followed Advice'
+        REASONS_FOR_FIRMS_FOLLOWING_OTHER = 'Reasons Firms Followed Advice - Other'
         ADVICE_NOT_FOLLOWED_BY_FIRMS = 'Advice Firms Did Not Follow'
         REASONS_FIRMS_NOT_FOLLOWING = 'Reasons Firms Did Not Follow Advice'
+        REASONS_FIRMS_NOT_FOLLOWING_OTHER = 'Reasons Firms Not Following Advice - Other'
         PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
         IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
         INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
@@ -109,8 +111,10 @@ def initialize_session_state():
             RANKED_TOPICS_BY_TIME_COVERED: [],
             ADVICE_FOLLOWED_BY_FIRMS: [],
             REASONS_FOR_FIRMS_FOLLOWING: [],
+            REASONS_FOR_FIRMS_FOLLOWING_OTHER: [],
             ADVICE_NOT_FOLLOWED_BY_FIRMS: [],
             REASONS_FIRMS_NOT_FOLLOWING: [],
+            REASONS_FIRMS_NOT_FOLLOWING_OTHER: [],
             PERSONNEL_TRAINING_AGREEMENT: [],
             IMPORTANT_INVESTMENT_CRITERION: [],
             INVESTMENT_CRITERION_OTHER: [],
@@ -386,8 +390,10 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     RANKED_TOPICS_BY_TIME_COVERED = 'Ranked Topics by Time Covered'
     ADVICE_FOLLOWED_BY_FIRMS = 'Advice Firms Chose to Follow'
     REASONS_FOR_FIRMS_FOLLOWING = 'Reasons Firms Followed Advice'
+    REASONS_FOR_FIRMS_FOLLOWING_OTHER = 'Reasons Firms Followed Advice - Other'
     ADVICE_NOT_FOLLOWED_BY_FIRMS = 'Advice Firms Did Not Follow'
     REASONS_FIRMS_NOT_FOLLOWING = 'Reasons Firms Did Not Follow Advice'
+    REASONS_FIRMS_NOT_FOLLOWING_OTHER = 'Reasons Firms Not Following Advice - Other'
     PERSONNEL_TRAINING_AGREEMENT = 'Agreement on Personnel Training'
     IMPORTANT_INVESTMENT_CRITERION = 'Important Investment Criterion'
     INVESTMENT_CRITERION_OTHER = 'Other Important Investment Criterion'
@@ -453,9 +459,11 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[MEASURES_EFFECTIVENESS_MOST].append(safe_var('measures_effectiveness_most'))
     data[MEASURES_EFFECTIVENESS_LEAST].append(safe_var('measures_effectiveness_least'))
     data[ADVICE_FOLLOWED_BY_FIRMS].append(safe_var('advice_followed_by_firms'))
+    
     data[REASONS_FOR_FIRMS_FOLLOWING].append(safe_var('reasons_for_firms_following'))
     data[ADVICE_NOT_FOLLOWED_BY_FIRMS].append(safe_var('advice_not_followed_by_firms'))
     data[REASONS_FIRMS_NOT_FOLLOWING].append(safe_var('reasons_firms_not_following'))
+    data[REASONS_FIRMS_NOT_FOLLOWING_OTHER].append(safe_var('reasons_firms_not_following_other'))
     data[PERSONNEL_TRAINING_AGREEMENT].append(safe_var('personnel_training_agreement'))
     data[IMPORTANT_INVESTMENT_CRITERION].append(safe_var('important_investment_criterion'))
     data[TYPICAL_MONTHLY_ENERGY_EXPENDITURE].append(safe_var('typical_monthly_energy_expenditure'))
@@ -494,6 +502,13 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
         data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
     else:
         data[FIRM_HOURLY_FEE].append(None) 
+        
+    # Append 'Other' reasons if provided
+    if 'reasons_for_firms_following_other' in st.session_state:
+        data[REASONS_FOR_FIRMS_FOLLOWING_OTHER].append(safe_var('reasons_for_firms_following_other'))
+    else:
+        data[REASONS_FOR_FIRMS_FOLLOWING_OTHER].append(None)
+        
     # Handle the "Other" option for investment criterion
     if st.session_state.get("important_investment_criterion") == "Other (please specify)":
         data[INVESTMENT_CRITERION_OTHER].append(safe_var('investment_criterion_other'))
