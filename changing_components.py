@@ -61,6 +61,7 @@ def initialize_session_state():
         AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
         NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
         PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
+        FIRM_FEE_DIFFERENT = 'Is Firm Fee Different'
         FIRM_HOURLY_FEE = 'Firm Hourly Fee'
         MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
         MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
@@ -94,6 +95,7 @@ def initialize_session_state():
             'Average Working Hours Per Client': [],
             'Number of Firms Advised on Sustainability': [],
             PERSONAL_HOURLY_FEE: [],
+            FIRM_FEE_DIFFERENT: [],  
             FIRM_HOURLY_FEE: [],
             MEETING_FREQUENCY_ADVISORS: [],
             MEETING_DURATION_ADVISORS: [],
@@ -369,6 +371,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     AVG_WORKING_HOURS_PER_CLIENT = 'Average Working Hours Per Client'
     NUM_FIRMS_ADVISED = 'Number of Firms Advised on Sustainability'
     PERSONAL_HOURLY_FEE = 'Personal Hourly Fee'
+    FIRM_FEE_DIFFERENT = 'Is Firm Fee Different'
     FIRM_HOURLY_FEE = 'Firm Hourly Fee'
     MEETING_FREQUENCY_ADVISORS = 'Meeting Frequency with Firms'
     MEETING_DURATION_ADVISORS = 'Typical Meeting Duration'
@@ -436,7 +439,8 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[AVG_WORKING_HOURS_PER_CLIENT].append(safe_var('working_hours'))
     data[NUM_FIRMS_ADVISED].append(safe_var('num_firms_advised'))
     data[PERSONAL_HOURLY_FEE].append(safe_var('personal_hourly_fee'))
-    data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
+    data[FIRM_FEE_DIFFERENT].append(safe_var('firm_fee_different'))
+    #data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
     data[MEETING_FREQUENCY_ADVISORS].append(safe_var('meeting_frequency_advisors'))
     data[MEETING_DURATION_ADVISORS].append(safe_var('meeting_duration_advisors'))
     data[FIRM_HOURS_PER_WEEK].append(safe_var('firm_hours_per_week'))
@@ -481,7 +485,10 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     data[MIN_EFF_SIZE_Q8].append(safe_var('num_input_question8'))
     data[COST_BENEFIT_RATIO].append(safe_var('cost_benefit'))
     data[RISK_AVERSION].append(safe_var('risk_aversion'))
-    
+    if safe_var('firm_fee_different') == "Yes":
+        data[FIRM_HOURLY_FEE].append(safe_var('firm_hourly_fee'))
+    else:
+        data[FIRM_HOURLY_FEE].append(None) 
     # Handle the "Other" option for investment criterion
     if st.session_state.get("important_investment_criterion") == "Other (please specify)":
         data[INVESTMENT_CRITERION_OTHER].append(safe_var('investment_criterion_other'))
