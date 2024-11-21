@@ -132,7 +132,7 @@ if st.session_state['consent'] == True:
     # with col1:   
     #     st.slider("Please move the slider to indicate your preference.", 1, 10, key= "risk_aversion")
     
-    submit = st.button("Submit", on_click= add_submission, args = ([updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df, edited_df]))
+    submit = st.button("Submit", on_click= add_submission, args = ([updated_bins_question_1_df, updated_bins_question_2_df, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df, updated_bins_question_6_df, updated_bins_question_7_df]))
     
     #
     if st.session_state['submit']:
