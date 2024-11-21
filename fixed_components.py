@@ -103,7 +103,7 @@ def sustainability_advisors_question():
             )
             # Workload and Client Interactions
             st.subheader("Workload and Client Interactions")
-            st.write("For the following questions, please reflect on your typical work within the **past 3 months**.")
+            st.write("For the following questions, please reflect on your typical work within the **past 6 months**.")
             
             # Question 5: Number of firms advised
             st.number_input(
