@@ -70,7 +70,7 @@ if st.session_state['consent'] == True:
     
     q7_config = config['question7']
     updated_bins_question_7_df, percentage_difference7, num_bins7 = create_question(q7_config)    
-    
+    effect_size_question7 = effect_size_question(q7_config)
     percentage_differences = [percentage_difference1, percentage_difference2] #, percentage_difference3, percentage_difference4, percentage_difference5
     updated_bins_list = [updated_bins_question_1_df, updated_bins_question_2_df]#, updated_bins_question_3_df, updated_bins_question_4_df, updated_bins_question_5_df
     
