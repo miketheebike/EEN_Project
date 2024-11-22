@@ -687,7 +687,7 @@ def instructions():
 
         fig.update_layout(
             title={
-                'text': "Tempurature (Belief Distribution)",
+                'text': "Temperature (Belief Distribution)",
                 'y':0.9,
                 'x':0.5,
                 'xanchor': 'center',
