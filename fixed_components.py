@@ -687,14 +687,14 @@ def instructions():
 
         fig.update_layout(
             title={
-                'text': "Probability distribution",
+                'text': "Tempurature (Belief Distribution)",
                 'y':0.9,
                 'x':0.5,
                 'xanchor': 'center',
                 'yanchor': 'top'
             },
             xaxis_title="Expectation Range",
-            yaxis_title="Probability (%)",
+            yaxis_title="Your Belief (%)",
             yaxis=dict(
                 range=[0, 100], 
                 gridcolor='rgba(255, 255, 255, 0.2)',  # Light grid on dark background
