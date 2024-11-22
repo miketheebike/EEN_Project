@@ -626,10 +626,6 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     if 'edited_df' in st.session_state:
         edited_df_session = st.session_state['edited_df']
         
-        # Debugging statements
-        st.write("Type of edited_df:", type(edited_df_session))
-        st.write("Content of edited_df:", edited_df_session)
-        
         if isinstance(edited_df_session, pd.DataFrame):
             data[TECHNOLOGY_EFFECTIVENESS_DATA].append(edited_df_session.to_dict(orient='records'))
         elif isinstance(edited_df_session, dict):
