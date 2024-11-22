@@ -688,7 +688,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
     client = gspread.authorize(creds)
-    sheet = client.open("EEN Priors Survey").sheet1
+    sheet = client.open("EEN_Survey_Data").sheet1
 
     # Step 3: Handle dynamic headers
     existing_headers = sheet.row_values(1) or []
