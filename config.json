@@ -134,7 +134,7 @@
       "question_number": "Question 7",
       "key_form": "key_form7",
        "title_question": "Question 7 - Correlation Between Program Effects in Another Country",
-      "subtitle_question": "What do you believe is the **correlation** between the program's effects in your country and another country in the region?  \n- A negative correlation (-1 to 0) means a negative impact elsewhere makes a positive impact in your country more likely.  \n- 0 means no relationship between the two.  \n- A positive correlation (0 to 1) means high impacts elsewhere correspond to high impacts in your country.  \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
+      "subtitle_question": "What do you believe is the **correlation** between the program's effects in your country and another country in the region?  \n- A negative correlation (-1 to 0) means a negative impact elsewhere makes a positive impact in your country more likely.  \n- 0 means no relationship between the two.  \n- A positive correlation (0 to 1) means high impacts elsewhere correspond to high impacts in your country.  \n\nPlease divide 100% among the options based on how likely you think each outcome is. (Ignore Percentages in first column.)",
       "column_1": "Correlation",
       "column_2": "Your Belief (%)",
       "minor_value": "-1.0",
@@ -145,7 +145,7 @@
       "key": "data_editor7",
       "title_barchart": "Distribution of your Beliefs",
       "num_input_question": "num_input_question7",
-      "effect_size": "*Based on your previous answers, we would like to understand the minimum correlation you would need to see in order to consider scaling up this program to more firms.*\n\n- What is the smallest correlation value (between -1 and 1) that would convince you to expand this program? Please provide a value, or simply skip this question if you do not want to answer. (Ignore Percentages in first column.)"
+      "effect_size": "*Based on your previous answers, we would like to understand the minimum correlation you would need to see in order to consider scaling up this program to more firms.*\n\n- What is the smallest correlation value (between -1 and 1) that would convince you to expand this program? Please provide a value, or simply skip this question if you do not want to answer."
     }
 
 }
