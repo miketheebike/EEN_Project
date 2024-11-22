@@ -76,7 +76,7 @@ if st.session_state['consent'] == True:
     
     
     st.subheader("Question 8 - Cost/Benefit Ratio")
-    st.write("A cost-benefit ratio compares the costs of a project to the benefits it delivers. For example, if a program costs €100,000 and its benefits are valued at €150,000, the cost-benefit ratio would be 1:1.5. This means that for every euro spent, the program delivers 1.5 euros in benefits. A higher ratio indicates better efficiency and greater value for money.  \n\nAt what cost-benefit ratio would you consider scaling the EEnergy Efficiency Project?  \n\nFor this question, consider 'benefits' as those achieved two years after running the program and 'costs' as all expenses to implement, operate, and maintain the project, including administration and overhead costs.")
+    st.write("A cost-benefit ratio compares the costs of a project to the benefits it delivers. For example, if a program costs €100,000 and its benefits are valued at €150,000, the cost-benefit ratio would be 1:1.5. This means that for every euro spent, the program delivers 1.5 euros in benefits. A higher ratio indicates better efficiency and greater value for money.  \n\nAt what cost-benefit ratio would you consider scaling the EEnergy Efficiency Project?  \n\nFor this question, consider 'benefits' as those achieved one year after running the program and 'costs' as all expenses to implement, operate, and maintain the project, including administration and overhead costs.")
     
     col1, _= st.columns(2)
     with col1:
