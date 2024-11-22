@@ -1,7 +1,7 @@
 
 {
     "header": {
-      "survey_title": "Expectations of Impacts of the EEnergy Efficiency Project ",
+      "survey_title": "**Expectations** of Impacts of the EEnergy Efficiency Project ",
       "survey_description": "The EENergy Efficiency project, funded by the EU’s Single Market Program (SMP), supports Small and Medium Enterprises (SMEs) in improving their energy efficiency by providing guidance from sustainability advisors and financial grants.\n\nAll 1,406 eligible EENergy applicants receive guidance from a sustainability advisor, and 707 of these applicants, chosen by lottery, are awarded grants of up to €10,000. This financial support is intended to help implement energy efficiency action plans through investments in technology, specialized consultancy, and skills enhancement.\n\nAs a pilot study, the program is part of DG GROW’s efforts to evaluate the effectiveness of these financial grants. Therefore, an impact assessment is being conducted in tandem with the program to provide deeper insights into the benefits of direct financial support.\n\nWe seek your perspective on the potential impact of receiving a €10,000 grant alongside standard support from sustainability advisors, compared to receiving only the standard support. Your insights are invaluable and will help us assess the effectiveness of the grant program. We would be grateful if you could take a moment to share your thoughts by responding to the questions below.\n\n**Please be assured that your responses will be kept strictly confidential. All information you provide will be anonymized and used solely for the purpose of evaluating the program's effectiveness. Individual responses will not be shared outside the World Bank's research team, and no personally identifiable information will be disclosed in any reports or publications.**\n\nEstimated completion time is around 30 minutes.\n\nThank you for your time and collaboration!"
     },
 
@@ -10,7 +10,7 @@
       "key_form": "key_form1",
       "title_question": "Question 1 - Annual kWh Consumption ",
       "subtitle_question": "On average, how much do you think the grant will impact the quantity of annual kWh consumption after one year? \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10,
@@ -27,7 +27,7 @@
       "key_form": "key_form2",
       "title_question": "Question 2 - Annual Renewable Energy Consumption",
       "subtitle_question": "On average, how much do you think the grant would impact the annual consumption of renewable energy after one year? \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10,
@@ -45,7 +45,7 @@
       "key_form": "key_form3",
       "title_question": "Question 3 - Solar Energy Installation",
       "subtitle_question": "On average, how much do you think the grant would impact the likelihood of installing solar/photovoltaic panels after one year? \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10,
@@ -63,7 +63,7 @@
       "key_form": "key_form4",
       "title_question": "Question 4 - Sustainability of the Business Model",
       "subtitle_question": "On average, how much do you think the grant would impact the business model's sustainability after one year? \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10,
@@ -81,7 +81,7 @@
       "key_form": "key_form5",
       "title_question": "Question 5 - Annual Revenue",
       "subtitle_question": "On average, how much do you think that the grant would impact the annual revenue after one year?  \n\n*Revenue is usually defined as the total amount of money received by the firm from its business activities during the year. This includes income from sales of goods and services, rental income, interest, royalties, fees, commissions, and any other business income. It does not include sales tax collected directly from customers and remitted to tax authorities.* \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10.0,
@@ -99,7 +99,7 @@
       "key_form": "key_form6",
       "title_question": "Question 6 - Energy Cost-Revenue Ratio",
       "subtitle_question": "The Energy Cost-Revenue Ratio measures how efficiently a company uses energy to generate revenue. It is calculated by dividing energy costs by total revenue. A lower ratio indicates better energy efficiency, meaning the company uses less energy per unit of revenue generated.  \n\nFor example:  \n- **Company A**:  \n  - Revenue: 1,000,000€  \n  - Energy Costs: 100,000€  \n  - Energy Cost-Revenue Ratio: 100,000€ / 1,000,000€ = 0.1  \n\n- **Company B**:  \n  - Revenue: 1,500,000€  \n  - Energy Costs: 250,000€  \n  - Energy Cost-Revenue Ratio: 250,000€ / 1,500,000€ = 0.167  \n\nIn this example, Company A has a lower Energy Cost-Revenue Ratio (0.1) compared to Company B (0.167), meaning Company A is more energy-efficient.  \n\nHow much do you think the grant will impact the Energy Cost-Revenue Ratio of beneficiary firms after one year, compared to firms in the standard group?  \n\nPlease divide 100% among the options based on how likely you think each outcome is.",
-      "column_1": "Percentage Change",
+      "column_1": "Expectation Range",
       "column_2": "Your Belief (%)",
       "minor_value": "Less than -10%",
       "min_value_graph": -10.0,
