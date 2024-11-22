@@ -746,4 +746,4 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
     #         cell_address = gspread.utils.rowcol_to_a1(next_row, col_index)
     #         sheet.update(cell_address, value_to_write)
 
-    st.success("Data successfully added to the sheet!")
+    st.success("Your response has been recorded. An enormous thanks for taking the time!")
