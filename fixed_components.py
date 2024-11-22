@@ -66,8 +66,8 @@ def personal_information():
 #'Policy implementer (EENergy consortium working package leaders)'
 TITLE_INSTRUCTIONS = '''Instructions'''
 
-SUBTITLE_INSTRUCTIONS = '''This example is designed to help you understand how to effectively respond to this survey.
-\n\nFor each question, you have a table with two columns. Please allocate probabilities based on the likelihood that you think a specific event will happen under the "Probability" column. The plot next to it will show the distribution of your answers. \n\nAs an example, suppose we asked about your beliefs regarding tomorrow's maximum temperature in degrees Celsius in your city or town.'''
+SUBTITLE_INSTRUCTIONS = '''This example is designed to help you understand how to respond to this survey effectively.
+\n\nFor each question, you will see a table with two columns. Please allocate percentages in the "Your Belief (%)" column to reflect how likely you think a specific event is. The total across all rows should add up to 100%. The plot next to the table will show the distribution of your answers.\n\nAs an example, suppose we asked about your expectations for tomorrow's maximum temperature in degrees Celsius in your city or town.'''
 
 CAPTION_INSTRUCTIONS = '''**In this case, your prediction indicates a 45\% chance of the maximum temperature reaching 26 degrees Celsius, 20\% chance of it reaching 26 degrees Celsius, and so on.**\n\n'''
 
