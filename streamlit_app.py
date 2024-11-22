@@ -66,7 +66,7 @@ if st.session_state['consent'] == True:
     col2, _ = st.columns(2)
     with col2:
         st.image("SatSunGraph.png", width = 350)
-    st.write("Saturday and Sunday temperatures in Washington DC for each weekend in 2022. As we might expect, there is a strong correlation between the temperature on a Saturday and on the Sunday, since some parts of the year are hot, and others colder. **The correlation here is 0.88.**")
+    st.write("Saturday and Sunday temperatures in Washington DC for each weekend in 2022. As we might expect, there is a strong correlation between the temperature on a Saturday and on the Sunday, since some parts of the year are hot, and others colder. \n-**The correlation here is 0.88.**")
     
     q7_config = config['question7']
     updated_bins_question_7_df, percentage_difference7, num_bins7 = create_question(q7_config)    
