@@ -280,7 +280,7 @@ def create_question(jsonfile_name):
 
             fig.update_layout(
                 title={
-                    'text': jsonfile_name['title_question'],
+                    'text': f"{jsonfile_name['title_question']} Distribution",
                     'y': 0.9,
                     'x': 0.5,
                     'xanchor': 'center',
