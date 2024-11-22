@@ -682,8 +682,7 @@ def add_submission(updated_bins_question_1_df, updated_bins_question_2_df, updat
         lambda x: str(x) if not isinstance(x, (int, float, str)) else x
     )
     concatenated_df = concatenated_df.fillna("")  # Replace NaN/None with an empty string
-    st.dataframe(session_state_df)
-    st.dataframe(questions_df)
+
     st.dataframe(concatenated_df)
     # Step 2: Authenticate and access Google Sheets
     scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
