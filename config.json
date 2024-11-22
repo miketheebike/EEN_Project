@@ -116,7 +116,7 @@
       "question_number": "Question X",
       "key_form": "key_formX",
       "title_question": "Correlation Example",
-      "subtitle_question": "Correlation measures how strongly two outcomes are related, ranging from -1 to 1.  \n- A correlation of -1 means they move perfectly in opposite directions.  \n- 0 means no relationship.  \n- +1 means they move perfectly together.  \nPositive values between 0 and 1 mean they are somewhat likely to increase together.  \nNow, consider this example:  \nWhat do you think is the correlation between the temperature on a Saturday and on a Sunday over all weekends in a year?  \nPlease allocate the probabilities in the cells based on your beliefs."
+      "subtitle_question": "Correlation measures how strongly two outcomes are related, ranging from -1 to 1.  \n- A correlation of -1 means they move perfectly in opposite directions.  \n- 0 means no relationship.  \n- +1 means they move perfectly together.  \nPositive values between 0 and 1 mean they are somewhat likely to increase together.  \nNow, consider this example:  \nWhat do you think is the correlation between the temperature on a Saturday and on a Sunday over all weekends in a year?  \nPlease allocate the probabilities in the cells based on your beliefs.",
       "column_1": "Correlation",
       "column_2": "Probabilities",
       "minor_value": "-1.0",
@@ -134,7 +134,7 @@
       "question_number": "Question 7",
       "key_form": "key_form7",
        "title_question": "Question 7 - Correlation Between Program Effects in Another Country",
-      "subtitle_question": "What do you believe is the **correlation** between the program's effects in your country and another country in the region?  \n- A negative correlation (-1 to 0) means a negative impact elsewhere makes a positive impact in your country more likely.  \n- 0 means no relationship between the two.  \n- A positive correlation (0 to 1) means high impacts elsewhere correspond to high impacts in your country.  \nPlease allocate the probabilities in the cells based on your beliefs."
+      "subtitle_question": "What do you believe is the **correlation** between the program's effects in your country and another country in the region?  \n- A negative correlation (-1 to 0) means a negative impact elsewhere makes a positive impact in your country more likely.  \n- 0 means no relationship between the two.  \n- A positive correlation (0 to 1) means high impacts elsewhere correspond to high impacts in your country.  \nPlease allocate the probabilities in the cells based on your beliefs.",
       "column_1": "Correlation",
       "column_2": "Probabilities",
       "minor_value": "-1.0",
