@@ -69,7 +69,7 @@ TITLE_INSTRUCTIONS = '''Instructions'''
 SUBTITLE_INSTRUCTIONS = '''This example is designed to help you understand how to respond to this survey effectively.
 \n\nFor each question, you will see a table with two columns. Please allocate percentages in the "Your Belief (%)" column to reflect how likely you think a specific event is. The total across all rows should add up to 100%. The plot next to the table will show the distribution of your answers.\n\nAs an example, suppose we asked about your expectations for tomorrow's maximum temperature in degrees Celsius in your city or town.'''
 
-CAPTION_INSTRUCTIONS = '''**In this case, your prediction indicates a 45\% chance of the maximum temperature reaching 26 degrees Celsius, 20\% chance of it reaching 26 degrees Celsius, and so on.**\n\n'''
+CAPTION_INSTRUCTIONS = '''**In this case, your prediction indicates a 45\% chance of the maximum temperature reaching 26 degrees Celsius, 20\% chance of it reaching 27 degrees Celsius, and so on.**\n\n'''
 
 
 def sustainability_advisors_question():
@@ -659,7 +659,7 @@ def instructions():
         zeros_column = [0 for _ in values_column]
         zeros_column[4:9] = [5, 15, 45, 20, 15]
 
-        data = {'Temperature': values_column, 'Probability': zeros_column}
+        data = {'Temperature': values_column, 'Your Belief (%)': zeros_column}
         df = pd.DataFrame(data)
         # Calculate the height based on the number of rows
         row_height = 35  # Adjust as necessary based on row size
@@ -667,7 +667,7 @@ def instructions():
         
         df['Temperature'] = df['Temperature'].astype('str')
     
-        st.data_editor(df, use_container_width=True, hide_index=True, disabled=('Temperature', "Probability"), height=table_height)
+        st.data_editor(df, use_container_width=True, hide_index=True, disabled=('Temperature', "Your Belief (%)"), height=table_height)
 
     st.write(CAPTION_INSTRUCTIONS)
 
@@ -676,13 +676,13 @@ def instructions():
         fig = go.Figure()
         fig.add_trace(go.Bar(
             x=values_column, 
-            y=df['Probability'], 
+            y=df['Your Belief (%)'], 
             marker_color='rgba(50, 205, 50, 0.9)',  # A nice bright green
             marker_line_color='rgba(0, 128, 0, 1.0)',  # Dark green outline for contrast
             marker_line_width=2,  # Width of the bar outline
-            text=[f"{p}" for p in df['Probability']],  # Adding percentage labels to bars
+            text=[f"{p}" for p in df['Your Belief (%)']],  # Adding percentage labels to bars
             textposition='auto',
-            name='Probability'
+            name='Your Belief (%)'
         ))
 
         fig.update_layout(
