@@ -59,14 +59,14 @@ if st.session_state['consent'] == True:
     effect_size_question6 = effect_size_question(q6_config)
         
     
-    qX_config = config['questionX']
-    updated_bins_question_X_df, percentage_differenceX, num_binsX = create_question(qX_config)
+    #qX_config = config['questionX']
+    #updated_bins_question_X_df, percentage_differenceX, num_binsX = create_question(qX_config)
     #effect_size_question9 = effect_size_question(q9_config)
-    
+    st.header("Correlation Example")
     col2, _ = st.columns(2)
     with col2:
         st.image("SatSunGraph.png", width = 350)
-    st.write("Saturday and Sunday temperatures in Washington DC for each weekend in 2022. As we might expect, there is a strong correlation between the temperature on a Saturday and on the Sunday, since some parts of the year are hot, and others colder. The correlation here is 0.88.")
+    st.write("Saturday and Sunday temperatures in Washington DC for each weekend in 2022. As we might expect, there is a strong correlation between the temperature on a Saturday and on the Sunday, since some parts of the year are hot, and others colder. **The correlation here is 0.88.**")
     
     q7_config = config['question7']
     updated_bins_question_7_df, percentage_difference7, num_bins7 = create_question(q7_config)    
@@ -76,7 +76,7 @@ if st.session_state['consent'] == True:
     
     
     st.subheader("Question 8 - Cost/Benefit Ratio")
-    st.write("In simple terms, a cost-benefit ratio is used to compare the costs of a project against the benefits it delivers. For instance, if a program costs €100.000 and the monetized value of its benefits is €150.000, the cost-benefit ratio would be 1:1.5. This means that for every euro spent, the program delivers one and a half euro in benefits. A higher ratio indicates greater efficiency and value for money. This question prompts to consider the efficiency and economic justification for scaling a program, ensuring that the decision aligns with both fiscal responsibility and the desired impact. At what cost-benefit ratio would you consider scaling the EEnergy Efficiency Project?\n Consider “benefits” that occurred after two years of running the program and “costs” as the total expenses incurred to implement, operate, and maintain a program or project (including administration and overhead costs).")
+    st.write("A cost-benefit ratio compares the costs of a project to the benefits it delivers. For example, if a program costs €100,000 and its benefits are valued at €150,000, the cost-benefit ratio would be 1:1.5. This means that for every euro spent, the program delivers 1.5 euros in benefits. A higher ratio indicates better efficiency and greater value for money.  \n\nAt what cost-benefit ratio would you consider scaling the EEnergy Efficiency Project?  \n\nFor this question, consider 'benefits' as those achieved two years after running the program and 'costs' as all expenses to implement, operate, and maintain the project, including administration and overhead costs.")
     
     col1, _= st.columns(2)
     with col1:
