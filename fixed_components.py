@@ -73,7 +73,7 @@ CAPTION_INSTRUCTIONS = '''**In this case, your prediction indicates a 45\% chanc
 
 
 def sustainability_advisors_question():
-    if st.session_state['professional_category'] == 'Sustainability Advisor':
+    if st.session_state['professional_category'] == 'Sustainability Advisor/Policy implementer':
         st.write("")
         st.write("")
         st.subheader(SECTION_THREE)
