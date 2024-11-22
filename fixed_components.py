@@ -317,7 +317,7 @@ def sustainability_advisors_question():
                 key="advice_followed_by_firms"
             )
             
-            st.write("20. Why do you think firms chose to follow your advice?")
+            st.write("Why do you think firms chose to follow your advice?")
             st.multiselect(
                 "Select all reasons that apply:",
                 options=[
@@ -344,7 +344,7 @@ def sustainability_advisors_question():
                 key="advice_not_followed_by_firms"
             )
             
-            st.write("22. Why do you think firms chose **not to follow** your advice?")
+            st.write("Why do you think firms chose **not to follow** your advice?")
             st.multiselect(
                 "Select all reasons that apply:",
                 options=[
@@ -398,7 +398,7 @@ def sustainability_advisors_question():
                 st.text_input("Please specify the criterion:", key="investment_criterion_other")
 
             # Technologies Effectiveness Assessment
-            st.subheader("(Final Question) Technologies Effectiveness Assessment")
+            st.subheader("(Final Question!) Technologies Effectiveness Assessment")
             st.write("Please complete the table below for each technology. For **Energy Savings**, use the units **euros saved per euro invested (€/€1000 invested)**.")
             st.write("**Note:** Please consider this for a firm of the size you usually advise.")
             
