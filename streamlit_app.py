@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 config = json.load(open('config.json'))
 
 initialize_session_state()
-survey_title_subtitle(config['header'])
+#survey_title_subtitle(config['header'])
 
 consent_form()
 if st.session_state['consent'] == True:
