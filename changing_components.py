@@ -220,6 +220,7 @@ def create_question(jsonfile_name):
                 st.session_state[f"data_{jsonfile_name['key']}"],
                 key=f"data_editor_{jsonfile_name['key']}",
                 hide_index=True,
+                save_edits_only=False,
                 use_container_width=True,
                 column_config={
                     jsonfile_name['column_2']: st.column_config.NumberColumn(
