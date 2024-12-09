@@ -218,7 +218,6 @@ def create_question(jsonfile_name):
 
             bins_grid = st.data_editor(
                 st.session_state[f"data_{jsonfile_name['key']}"],
-                save_edits_only=False,
                 key=f"data_editor_{jsonfile_name['key']}",
                 hide_index=True,
                 use_container_width=True,
