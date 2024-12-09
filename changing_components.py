@@ -293,7 +293,9 @@ def create_question(jsonfile_name):
                 st.session_state[f"data_{jsonfile_name['key']}"][jsonfile_name['column_1']]  # Example of dependency
             )
             
-
+            
+            # Display the table
+            st.write(st.session_state[f"data_{jsonfile_name['key']}"])
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
 
