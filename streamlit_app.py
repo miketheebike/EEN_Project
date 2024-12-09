@@ -12,6 +12,8 @@ config = json.load(open('config.json'))
 initialize_session_state()
 
 survey_title_subtitle(config['header'])
+# Display encouragement
+st.warning(config["header"]["encouragement"])
 
 consent_form()
 if st.session_state['consent'] == True:
