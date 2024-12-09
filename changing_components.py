@@ -163,7 +163,12 @@ def safe_var(key):
 def survey_title_subtitle(header_config):
     st.title(header_config['survey_title'])
     st.write(header_config['survey_description'])
-    
+
+scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_to_json(), scope)
+client = gspread.authorize(creds)
+sheet = client.open("EEN_Survey_Data").sheet1
+
 def create_question(jsonfile_name):
     import streamlit as st
     import numpy as np
@@ -198,10 +203,28 @@ def create_question(jsonfile_name):
     # Initialize session state for data
     if f"data_{jsonfile_name['key']}" not in st.session_state:
         st.session_state[f"data_{jsonfile_name['key']}"] = data.copy()
+        
+    def save_table_to_google_sheets(key):
+        """Save updated table data to Google Sheets."""
+        table_data = st.session_state[key]
 
+        # Handle dynamic headers in Google Sheets
+        existing_headers = sheet.row_values(1) or []
+        for col in table_data.columns:
+            if col not in existing_headers:
+                existing_headers.append(col)
+        sheet.update(f"A1:{gspread.utils.rowcol_to_a1(1, len(existing_headers))}", [existing_headers])
+
+        # Update rows in Google Sheets
+        sheet.update(
+            f"A2:{gspread.utils.rowcol_to_a1(len(table_data) + 1, len(existing_headers))}",
+            table_data.values.tolist()
+        )
+        
     # Display title and subtitle for the question
     st.subheader(jsonfile_name['title_question'])
     st.write(jsonfile_name['subtitle_question'])
+
 
     # Create a container for the data editor and other elements
     data_container = st.container()
@@ -257,7 +280,7 @@ def create_question(jsonfile_name):
 
             # Update the session state
             st.session_state[f"data_{jsonfile_name['key']}"] = bins_grid.copy()
-
+            save_table_to_google_sheets(f"data_{jsonfile_name['key']}")
 
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
