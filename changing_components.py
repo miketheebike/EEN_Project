@@ -215,14 +215,14 @@ def create_question(jsonfile_name):
             # Calculate the height based on the number of rows
             row_height = 35  # Adjust as necessary based on row size
             table_height = ((len(data)+1) * row_height) 
-            # bins_grid = st.data_editor(
-            #     st.session_state[f"data_{jsonfile_name['key']}"],
-            #     key=f"data_editor_{jsonfile_name['key']}",  # Ensure unique key for data editor
-            #     hide_index=True,
-            #     use_container_width=True,
-            #     disabled=[jsonfile_name['column_1']],
-            #     height=table_height
-            # )
+            bins_grid = st.data_editor(
+                st.session_state[f"data_{jsonfile_name['key']}"],
+                key=f"data_editor_{jsonfile_name['key']}",  # Ensure unique key for data editor
+                hide_index=True,
+                use_container_width=True,
+                disabled=[jsonfile_name['column_1']],
+                height=table_height
+            )
 
             # bins_grid = st.data_editor(
             #     st.session_state[f"data_{jsonfile_name['key']}"],
@@ -242,60 +242,23 @@ def create_question(jsonfile_name):
             #     height=table_height
             # )
 
-            # # Add reset button with a unique key
-            # reset = st.button(
-            #     "Reset values to zero (Click twice)", 
-            #     key=f"reset_button_{jsonfile_name['key']}"  # Unique key for the button
-            # )
-            # if reset:
-            #     bins_grid[jsonfile_name['column_2']] = 0
-
-            # # # Ensure the probabilities are numeric and replace None or invalid entries with zero
-            # # bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
-            # #     bins_grid[jsonfile_name['column_2']], errors='coerce'
-            # # ).fillna(0)
-
-            # # Update the session state
-            # st.session_state[f"data_{jsonfile_name['key']}"] = bins_grid.copy()
-
-            # Function to update session state when changes are made
-            def update_session_state():
-                for idx, change in st.session_state[f"data_editor_{jsonfile_name['key']}"]["edited_rows"].items():
-                    for col, value in change.items():
-                        st.session_state[f"data_{jsonfile_name['key']}"].loc[idx, col] = value
-            
-            # Initialize session state
-            if f"data_{jsonfile_name['key']}" not in st.session_state:
-                st.session_state[f"data_{jsonfile_name['key']}"] = data.copy()
-            
-            # Use st.data_editor with on_change callback
-            bins_grid = st.data_editor(
-                st.session_state[f"data_{jsonfile_name['key']}"],
-                key=f"data_editor_{jsonfile_name['key']}",
-                on_change=update_session_state,
-                hide_index=True,
-                use_container_width=True,
-                column_config={
-                    jsonfile_name['column_2']: st.column_config.NumberColumn(
-                        jsonfile_name['column_2'],
-                        min_value=0,
-                        max_value=100,
-                        step=1,
-                        format='%d'
-                    )
-                },
-                disabled=[jsonfile_name['column_1']],
-                height=table_height
+            # Add reset button with a unique key
+            reset = st.button(
+                "Reset values to zero (Click twice)", 
+                key=f"reset_button_{jsonfile_name['key']}"  # Unique key for the button
             )
-            
-            # Update dependent values dynamically (if needed)
-            st.session_state[f"data_{jsonfile_name['key']}"][jsonfile_name['column_2']] = (
-                st.session_state[f"data_{jsonfile_name['key']}"][jsonfile_name['column_1']]  # Example of dependency
-            )
-            
-            
-            # Display the table
-            st.write(st.session_state[f"data_{jsonfile_name['key']}"])
+            if reset:
+                bins_grid[jsonfile_name['column_2']] = 0
+
+            # # Ensure the probabilities are numeric and replace None or invalid entries with zero
+            # bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
+            #     bins_grid[jsonfile_name['column_2']], errors='coerce'
+            # ).fillna(0)
+
+            # Update the session state
+            st.session_state[f"data_{jsonfile_name['key']}"] = bins_grid.copy()
+
+
             # Calculate the remaining percentage to be allocated
             percentage_difference = round(100 - sum(bins_grid[jsonfile_name['column_2']]))
 
