@@ -216,14 +216,19 @@ def create_question(jsonfile_name):
             row_height = 35  # Adjust as necessary based on row size
             table_height = ((len(data)+1) * row_height) 
 
-            # Display the data editor
             bins_grid = st.data_editor(
                 st.session_state[f"data_{jsonfile_name['key']}"],
                 key=f"data_editor_{jsonfile_name['key']}",
                 hide_index=True,
                 use_container_width=True,
                 column_config={
-                    jsonfile_name['column_2']: st.column_config.NumberColumn(jsonfile_name['column_2'])
+                    jsonfile_name['column_2']: st.column_config.NumberColumn(
+                        jsonfile_name['column_2'],
+                        min_value=0,
+                        max_value=100,
+                        step=1,
+                        format='%d'
+                    )
                 },
                 disabled=[jsonfile_name['column_1']],
                 height=table_height
