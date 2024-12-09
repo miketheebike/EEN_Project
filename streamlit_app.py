@@ -26,7 +26,10 @@ if st.session_state['consent'] == True:
     st.subheader(SECTION_TWO)
     #st.subheader(SECTION_TWO)
     instructions()
-    
+    # Display encouragement
+    st.warning("NOTE: If a value disappears after entering it into the table, you will need re-enter that value. This is a known issue with the software. Appologies for the inconvenience.")
+
+
     q1_config = config['question1']
     updated_bins_question_1_df, percentage_difference1, num_bins1 = create_question(q1_config)
     
