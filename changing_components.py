@@ -219,9 +219,12 @@ def create_question(jsonfile_name):
             # Display the data editor
             bins_grid = st.data_editor(
                 st.session_state[f"data_{jsonfile_name['key']}"],
-                key=f"data_editor_{jsonfile_name['key']}",  # Ensure unique key for data editor
+                key=f"data_editor_{jsonfile_name['key']}",
                 hide_index=True,
                 use_container_width=True,
+                column_config={
+                    jsonfile_name['column_2']: st.column_config.NumberColumn(jsonfile_name['column_2'])
+                },
                 disabled=[jsonfile_name['column_1']],
                 height=table_height
             )
@@ -234,10 +237,10 @@ def create_question(jsonfile_name):
             if reset:
                 bins_grid[jsonfile_name['column_2']] = 0
 
-            # Ensure the probabilities are numeric and replace None or invalid entries with zero
-            bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
-                bins_grid[jsonfile_name['column_2']], errors='coerce'
-            ).fillna(0)
+            # # Ensure the probabilities are numeric and replace None or invalid entries with zero
+            # bins_grid[jsonfile_name['column_2']] = pd.to_numeric(
+            #     bins_grid[jsonfile_name['column_2']], errors='coerce'
+            # ).fillna(0)
 
             # Update the session state
             st.session_state[f"data_{jsonfile_name['key']}"] = bins_grid.copy()
