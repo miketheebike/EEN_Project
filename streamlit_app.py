@@ -8,39 +8,10 @@ import numpy as np
 st.set_page_config(layout="wide")
 
 # Read the JSON file
-#config = json.load(open('config.json'))
-# Load JSON configuration
-with open('config.json', 'r') as file:
-    config = json.load(file)
+config = json.load(open('config.json'))
 
-# Display survey title and introduction
-st.title(config["survey_title"])
-st.subheader(config["introduction"]["header"])
-st.write(config["introduction"]["purpose"])
-st.write(config["introduction"]["why_participate"])
 
-# Display survey structure
-st.header(config["introduction"]["structure"]["header"])
-sections = config["introduction"]["structure"]["sections"]
-
-for section in sections:
-    st.markdown(f"### {section['title']}")
-    st.write(f"**Duration:** {section['duration']}")
-    st.write(f"{section['description']}")
-
-st.write(f"**Completion Time:** {config['introduction']['structure']['completion_time']}")
-st.write(f"**Deadline:** {config['introduction']['structure']['deadline']}")
-st.write(f"**Confidentiality:** {config['introduction']['structure']['confidentiality']}")
-
-# Display encouragement
-st.warning(config["introduction"]["encouragement"])
-
-# Display additional information
-with st.expander(config["additional_information"]["header"]):
-    for paragraph in config["additional_information"]["content"]:
-        st.write(paragraph)
-initialize_session_state()
-#survey_title_subtitle(config['header'])
+survey_title_subtitle(config['header'])
 
 consent_form()
 if st.session_state['consent'] == True:
