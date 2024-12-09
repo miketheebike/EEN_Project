@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
 # Read the JSON file
 config = json.load(open('config.json'))
-
+initialize_session_state()
 
 survey_title_subtitle(config['header'])
 
