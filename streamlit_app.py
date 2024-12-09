@@ -15,6 +15,10 @@ survey_title_subtitle(config['header'])
 # Display encouragement
 st.warning(config["header"]["encouragement"])
 
+# Display additional information
+with st.expander(config["additional_information"]["header"]):
+    for paragraph in config["additional_information"]["content"]:
+        st.write(paragraph)
 consent_form()
 if st.session_state['consent'] == True:
     personal_information()
