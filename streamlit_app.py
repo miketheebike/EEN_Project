@@ -27,7 +27,7 @@ if st.session_state['consent'] == True:
     #st.subheader(SECTION_TWO)
     instructions()
     # Display encouragement
-    st.warning("NOTE: If a number disappears after entering into the tables below, you will need re-enter that number. This is a known issue with the software. \n\nAppologies for the inconvenience.")
+    st.warning("NOTE: If a number disappears after entering it into the tables below, please re-enter the number. This is a known issue with the software. \n\nAppologies for the inconvenience.")
 
 
     q1_config = config['question1']
