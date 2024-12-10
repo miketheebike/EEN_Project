@@ -191,7 +191,7 @@ def create_question(jsonfile_name):
         x_axis[7] = '0.01% to 0.19%'
     elif jsonfile_name['min_value_graph'] == -10:
         x_axis.insert(3, "0%")
-        x_axis[5] = '0.01% to 4.99%'
+        x_axis[4] = '0.01% to 4.99%'
     elif jsonfile_name['min_value_graph'] == 0:    
         x_axis[1] = '0.01% to 4.99%'
 
