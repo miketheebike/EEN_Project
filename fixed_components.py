@@ -162,7 +162,7 @@ def sustainability_advisors_question():
             if st.session_state.get("firm_fee_different") == "Yes":
                 st.radio(
                     "What is your firm's average per hour consultancy fee?",
-                    options=[
+                    options=["",
                         "Less than €50",
                         "€50 - €100",
                         "€100 - €150",
@@ -373,7 +373,7 @@ def sustainability_advisors_question():
             st.subheader("Additional Questions")
             st.radio(
                 "23. Please indicate your agreement with the following statement:\n\n**\"For energy efficiency investments to be successful, firms must usually undertake personnel training.\"**",
-                options=[
+                options=["",
                     "1 - Largely disagree",
                     "2 - Somewhat disagree",
                     "3 - Neither agree nor disagree",
@@ -384,7 +384,7 @@ def sustainability_advisors_question():
             )
             st.radio(
                 "24. What criterion do you consider most important when recommending a particular investment?",
-                options=[
+                options=["",
                     "Payback time / Breakeven time",
                     "Total cost savings, regardless of time",
                     "Other (please specify)"
