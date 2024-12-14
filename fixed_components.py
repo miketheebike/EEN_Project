@@ -93,12 +93,12 @@ def sustainability_advisors_question():
             st.date_input("2. In which year did you join EEN?", key="join_date_een")
             st.radio(
                 "3. Do you describe yourself as an energy efficiency expert, generalist, or other?",
-                options=["Energy efficiency expert", "Generalist", "Other"],
+                options=["","Energy efficiency expert", "Generalist", "Other"],
                 key="expert_or_generalist"
             )
             st.selectbox(
                 "4. On average, what percentage of your work is related to energy efficiency topics?",
-                options=["Less than 30%", "30-70%", "More than 70%"],
+                options=["","Less than 30%", "30-70%", "More than 70%"],
                 key="work_dedication"
             )
             # Workload and Client Interactions
@@ -131,34 +131,31 @@ def sustainability_advisors_question():
             # Question 8: Meeting frequency
             st.selectbox(
                 "8. How often do you meet with the firms you advise?",
-                options=["Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"],
+                options=["","Daily", "Weekly", "Monthly", "Quarterly", "Annually", "As needed"],
                 key="meeting_frequency_advisors"
             )
             
             # Question 9: Meeting duration
             st.selectbox(
                 "9. How long are your typical meetings with the firms you advise?",
-                options=["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"],
+                options=["","Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"],
                 key="meeting_duration_advisors"
             )
+
             
             # Consultancy and Advisory Fees
             st.subheader("Consultancy and Advisory Fees")
-            st.radio(
-                "10. What is your per hour consultancy fee?",
-                options=[
-                    "Less than €50",
-                    "€50 - €100",
-                    "€100 - €150",
-                    "€150 - €200",
-                    "More than €200"
-                ],
+            personal_hourly_fee = st.number_input(
+                "10. What is your per hour consultancy fee? (€)",
+                min_value=0.0,  # Minimum value for the fee
+                step=1.0,  # Step size for increment/decrement
+                format="%.2f",  # Format to display two decimal places
                 key="personal_hourly_fee"
             )
             
             st.radio(
                 "11. Is your firm's per hour consultancy fee different from your personal fee?",
-                options=["Yes", "No"],
+                options=["","Yes", "No"],
                 key="firm_fee_different"
             )
             
